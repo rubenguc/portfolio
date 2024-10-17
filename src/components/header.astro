@@ -1,0 +1,28 @@
+---
+const LINKS = [
+  {
+    text: "About",
+    href: "/"
+  },
+  {
+    text: "Experience",
+    href: "/experience"
+  },
+  {
+    text: "Portfolio",
+    href: "/portfolio"
+  }
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="fixed z-50 top-0 left-0 w-full py-2">
+  <nav class="mx-auto w-fit rounded-xl bg-background border border-secondary/30 flex gap-3 px-4 py-2">
+    {
+      LINKS.map(link =>
+        <a class={`${currentPath === link.href ? "text-primary" : ""} hover:text-secondary border-b border-b-transparent hover:border-b hover:border-b-secondary/30`} href={link.href}>{link.text}</a>
+      ) 
+    }
+  </nav>
+</header>

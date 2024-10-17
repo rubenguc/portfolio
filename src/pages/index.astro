@@ -1,0 +1,16 @@
+---
+import { about } from "../info";
+import MainLayout from "../layouts/MainLayout.astro";
+import PageLayout from "../layouts/PageLayout.astro";
+---
+
+<MainLayout>
+  <PageLayout title="About" icon="mdi:info-outline">
+    <p class="text-gray-300 text-lg">{about.description}</p>
+
+    <h3 class="mt-10 mb-5 text-xl">Hobbies</h3>
+    <div>
+      {about.hobbies.map((hobbie) => <p>{hobbie}</p>)}
+    </div>
+  </PageLayout>
+</MainLayout>

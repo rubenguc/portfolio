@@ -1,0 +1,59 @@
+---
+import type { JSX } from "astro/jsx-runtime";
+import { Icon } from "astro-icon/components";
+
+const CONTANT_INFO: {
+  icon: string;
+  label: string;
+  text: JSX.Element | string;
+}[] = [
+  {
+    icon: "mdi:email",
+    label: "email",
+    text: `<a href="mailto:rubdeivis@gmail.com" rel="noopener noreferrer" target="_blank">rubdeivis@gmail.com</a>`,
+  },
+  {
+    icon: "mdi:linkedin",
+    label: "linkedin",
+    text: `<a href="https://www.linkedin.com/in/rubengutierrezc/" rel="noopener noreferrer" target="_blank">rubengutierrezc</a>`,
+  },
+  {
+    icon: "mdi:phone",
+    label: "phone",
+    text: `<a href="https://wa.me/584120234481" rel="noopener noreferrer" target="_blank">+584120234481</a>`,
+  },
+  {
+    icon: "mdi:location",
+    label: "location",
+    text: "Lara, Venezuela",
+  },
+];
+---
+
+<aside
+  class="flex flex-col rounded-xl bg-background border border-secondary/30 p-4 w-full lg:w-[21%] xl:sticky h-fit top-2 shadow-xl"
+>
+  <div class="flex flex-col gap-3 flex-1">
+    <img
+      class="rounded-full w-32 mx-auto"
+      src="/profile.jpeg"
+      alt="profile picture"
+    />
+    <p class="text-center font-bold text-xl">Ruben Gutierrez</p>
+  </div>
+  <div class="grid  sm:grid-cols-2 lg:grid-cols-1 flex-wrap gap-6 mt-6 border-t border-t-gray-400 pt-4">
+    {
+      CONTANT_INFO.map((info) => (
+        <div class="flex gap-3 items-center overflow-hidden">
+          <div class="rounded bg-gray-500/20 p-2">
+            <Icon name={info.icon} size={22} class="text-primary" />
+          </div>
+          <div class="flex flex-col">
+            <span class="text-xs text text-gray-300">{info.label}</span>
+            {<div class="text-sm" set:html={info.text} />}
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</aside>
