@@ -55,7 +55,7 @@ export const battleship: Project = {
 
 export const dokkanhp: Project = {
   id: PROJECTS_IDs.DOKKAN,
-  mainPhoto: PROJECTS_FOLDER.BATTLESHIP + "1.jpg",
+  mainPhoto: PROJECTS_FOLDER.DOKKAN + "1.jpg",
   title: "Dokkan hidden potentials",
   description: `
     Database for the hidden potential of characters of dokkan battle.
