@@ -1,5 +1,5 @@
 ---
-import { projects } from "../info";
+import { PROJECTS } from "../contants/projects";
 import MainLayout from "../layouts/MainLayout.astro";
 import PageLayout from "../layouts/PageLayout.astro";
 ---
@@ -8,15 +8,15 @@ import PageLayout from "../layouts/PageLayout.astro";
   <PageLayout title="Portfolio" icon="mdi:info-outline">
     <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-10">
       {
-        projects.map((project) => (
+        PROJECTS.map((project) => (
           <a
             class="flex flex-col gap-1 hover:bg-secondary/10 rounded-xl"
-            href="#"
+            href={`/project/${project.id}`}
           >
             <figure class="rounded-xl overflow-hidden">
-              <img src={`/projects/${project.folder}/${project.main}`} />
+              <img src={project.mainPhoto} />
             </figure>
-            <h3 class="ms-2 py-1 text-lg text-gray-200">{project.name}</h3>
+            <h3 class="ms-2 py-1 text-lg text-gray-200">{project.title}</h3>
           </a>
         ))
       }

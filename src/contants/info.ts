@@ -1,4 +1,4 @@
-import type { WorkExperience } from "./interfaces";
+import type { WorkExperience } from "../interfaces";
 
 export const about = {
   description:
@@ -64,16 +64,3 @@ export const experience: { work: WorkExperience[] } = {
     },
   ],
 };
-
-export const projects = [
-  {
-    name: "What do your cheems",
-    folder: "wdyc",
-    main: "1.png",
-  },
-  {
-    name: "Battleship",
-    folder: "battleship",
-    main: "1.png",
-  },
-];

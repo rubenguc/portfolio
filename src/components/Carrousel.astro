@@ -1,0 +1,32 @@
+---
+const { screenshots } = Astro.props;
+---
+
+<div class="swiper mySwiper max-w-[46rem] w-full aspect-video">
+  <div class="swiper-wrapper">
+    {
+      screenshots.map((image) => (
+        <div class="swiper-slide">
+          <img src={image} />
+        </div>
+      ))
+    }
+  </div>
+</div>
+
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+/>
+<script
+  is:inline
+  src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script is:inline>
+  new Swiper(".swiper", {
+    loop: true,
+    autoplay: {
+      delay: 2500,
+      disableOnInteraction: false,
+    },
+  });
+</script>

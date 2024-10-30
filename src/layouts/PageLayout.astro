@@ -4,14 +4,15 @@ import { Icon } from "astro-icon/components";
 const { title, icon } = Astro.props;
 ---
 
+
+
 <>
   <div class="title relative flex items-center gap-1 mb-10">
-    <Icon name={icon} class="text-secondary" size={30} />
-    <h2 class="text-3xl xl:text-4xl ">{title}</h2>
+    {icon && <Icon id="icon" name={icon} class="text-secondary" size={30} />}
+    <h2 class="text-3xl xl:text-4xl">{title}</h2>
   </div>
   <slot />
 </>
-
 
 <style>
   .title::after {
@@ -24,6 +25,4 @@ const { title, icon } = Astro.props;
     background-color: var(--color-primary);
     border-radius: 3px;
   }
-
-  
 </style>

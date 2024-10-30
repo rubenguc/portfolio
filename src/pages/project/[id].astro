@@ -1,0 +1,20 @@
+---
+import { PROJECTS } from "../../contants/projects";
+import ProjectLayout from "../../layouts/ProjectLayout.astro";
+
+export function getStaticPaths() {
+  return PROJECTS.map(({ id }) => ({
+    params: {
+      id,
+    },
+  }));
+}
+
+const { id } = Astro.params;
+
+const project = PROJECTS.find((project) => project.id === id);
+---
+
+<ProjectLayout 
+  {...project}
+/>

@@ -1,0 +1,21 @@
+---
+const { links, singleTitle, multiTitle } = Astro.props
+
+const title = links.length === 1 ? singleTitle : multiTitle;
+const displayText = (repo) => (links.length === 1 ? repo.url : repo.title);
+---
+
+<h4>{title}:</h4>
+<div class="flex flex-col">
+  {
+    links.map((repo) => (
+      <a
+        class="text-primary hover:text-secondary hover:border-b w-fit"
+        href={repo.url}
+        target="_blank"
+      >
+        {displayText(repo)}
+      </a>
+    ))
+  }
+</div>
