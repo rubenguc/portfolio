@@ -1,16 +1,17 @@
 ---
-import { about } from "../contants/info";
 import MainLayout from "../layouts/MainLayout.astro";
-import PageLayout from "../layouts/PageLayout.astro";
+import About from "../components/sections/About.astro";
+import Experience from "../components/sections/Experience.astro";
+import Portfolio from "../components/sections/Portfolio.astro";
+import Header from "../components/ui/header.astro";
 ---
 
-<MainLayout>
-  <PageLayout title="About" icon="mdi:info-outline">
-    <p class="text-gray-300 text-lg">{about.description}</p>
+<Header />
 
-    <h3 class="mt-10 mb-5 text-xl">Hobbies</h3>
-    <div>
-      {about.hobbies.map((hobbie) => <p>{hobbie}</p>)}
-    </div>
-  </PageLayout>
+<MainLayout>
+  <div class="flex flex-col gap-10">
+    <About />
+    <Experience />
+    <Portfolio />
+  </div>
 </MainLayout>

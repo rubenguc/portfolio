@@ -1,8 +1,8 @@
 ---
 import "@fontsource/poppins";
-import Content from "../components/Content.astro";
-import Header from "../components/header.astro";
-import ProfileCard from "../components/ProfileCard.astro";
+import Content from "../components/ui/Content.astro";
+import Header from "../components/ui/header.astro";
+import ProfileCard from "../components/ui/ProfileCard.astro";
 ---
 
 <html lang="en">
@@ -14,9 +14,8 @@ import ProfileCard from "../components/ProfileCard.astro";
     <title>Ruben Gutierrez PortFolio</title>
   </head>
   <body>
-    <Header />
     <main
-      class="w-full max-w-6xl mx-auto px-10 py-16 flex flex-col lg:flex-row gap-4"
+      class="w-full max-w-6xl mx-auto px-5 md:px-10 py-16 flex flex-col lg:flex-row gap-4"
     >
       <ProfileCard />
       <Content>
@@ -38,4 +37,5 @@ import ProfileCard from "../components/ProfileCard.astro";
     min-width: 320px;
     font-family: "Poppins", sans-serif;
   }
+  
 </style>

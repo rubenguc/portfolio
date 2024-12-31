@@ -6,8 +6,14 @@ export interface WorkExperience {
 }
 
 interface Link {
+  type: PROJECT_TYPE;
   title: string;
   url: string;
+}
+
+export enum PROJECT_TYPE {
+  REPO = "REPO",
+  PREVIEW = "Preview",
 }
 
 export interface Project {
@@ -15,8 +21,7 @@ export interface Project {
   mainPhoto: string;
   title: string;
   description: string;
-  links?: Link[];
-  repositories: Link[];
+  links: Link[];
   screenshots: string[];
   technologies: string[];
 }

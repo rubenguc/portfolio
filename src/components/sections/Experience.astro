@@ -1,0 +1,33 @@
+---
+import { experience } from "../../contants/info";
+import SectionLayout from "../../layouts/SectionLayout.astro";
+---
+
+<SectionLayout title="Experience" id="experience" icon="mdi:work-outline">
+  <div>
+    {
+      experience.work.map((work) => (
+        <div class="flex gap-x-3">
+          <div class="relative last:after:hidden after:absolute after:top-3 after:bottom-0 after:start-3.5 after:w-px after:-translate-x-[0.5px] after:bg-secondary ">
+            <div class="relative z-10 size-7 flex justify-center items-center">
+              <div class="size-3 rounded-full bg-secondary" />
+            </div>
+          </div>
+
+          <div class="grow pt-0.5 pb-8 xl:p-3">
+            <h3 class="flex gap-x-1.5 font-semibold text-gray-800 dark:text-white md:text-2xl">
+              {work.company}
+            </h3>
+            <span class="text-secondary">{work.role}</span>
+
+            <div class="flex flex-col gap-5 mt-4">
+              {work.hits.map((hit) => (
+                <p class="text-base text-gray-300">{hit}</p>
+              ))}
+            </div>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</Se>

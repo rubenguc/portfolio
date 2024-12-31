@@ -1,4 +1,4 @@
-import type { Project } from "../interfaces";
+import { PROJECT_TYPE, type Project } from "../interfaces";
 import { technologies } from "./technologies";
 
 export const getProjectFolder = (folder: string) => {
@@ -32,15 +32,15 @@ export const battleship: Project = {
   description:
     "A simple web-based version of the classic Battleship board game, developed with React and Firebase. The app features a responsive design using Tailwind CSS and includes unit tests to ensure reliable gameplay. Additionally, it is set up with a GitHub Actions workflow that runs tests, builds a Docker image, and publishes it to Docker Hub, along with security analysis through CodeQL.",
   screenshots: getPhotosInFolder(6, PROJECTS_FOLDER.BATTLESHIP),
-  repositories: [
-    {
-      title: "Frontend",
-      url: "https://github.com/rubenguc/battleship",
-    },
-  ],
   links: [
     {
-      title: "Web",
+      type: PROJECT_TYPE.REPO,
+      title: "Repo",
+      url: "https://github.com/rubenguc/battleship",
+    },
+    {
+      type: PROJECT_TYPE.PREVIEW,
+      title: "Preview",
       url: "https://battleship-vert.vercel.app",
     },
   ],
@@ -62,15 +62,15 @@ export const dokkanhp: Project = {
     The hidden potentials on the web may not be the best for any character; these are based on <a class="text-primary hover:text-secondary hover:border-b w-fit" href="https://www.youtube.com/playlist?list=PL96oiZRZyU_Mm3z4WiVp7wfp1H4IFYV9Y" target="_blank">Playmaker's guides</a>
   `,
   screenshots: getPhotosInFolder(2, PROJECTS_FOLDER.DOKKAN),
-  repositories: [
-    {
-      title: "Frontend",
-      url: "https://github.com/rubenguc/dokkan-hidden-potentials",
-    },
-  ],
   links: [
     {
-      title: "Web",
+      type: PROJECT_TYPE.REPO,
+      title: "repo",
+      url: "https://github.com/rubenguc/dokkan-hidden-potentials",
+    },
+    {
+      type: PROJECT_TYPE.PREVIEW,
+      title: "Preview",
       url: "https://dokkan-hidden-potentials.vercel.app/",
     },
   ],
