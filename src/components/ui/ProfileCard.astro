@@ -4,29 +4,34 @@ import { Icon } from "astro-icon/components";
 
 const CONTANT_INFO: {
   icon: string;
-  label: string;
   text: JSX.Element | string;
+  href: string;
 }[] = [
   {
     icon: "mdi:email",
-    label: "email",
-    text: `<a href="mailto:rubdeivis@gmail.com" rel="noopener noreferrer" target="_blank">rubdeivis@gmail.com</a>`,
+    text: "rubdeivis@gmail.com",
+    href: "mailto:rubdeivis@gmail.com",
   },
   {
     icon: "mdi:linkedin",
-    label: "linkedin",
-    text: `<a href="https://www.linkedin.com/in/rubengutierrezc/" rel="noopener noreferrer" target="_blank">rubengutierrezc</a>`,
+    text: "rubengutierrezc",
+    href: "https://www.linkedin.com/in/rubengutierrezc/"
   },
   {
     icon: "mdi:phone",
-    label: "phone",
-    text: `<a href="https://wa.me/584120234481" rel="noopener noreferrer" target="_blank">+584120234481</a>`,
+    text: "+584120234481",
+    href: "https://wa.me/584120234481"
   },
+  // {
+  //   icon: "mdi:location",
+  //   label: "location",
+  //   text: "Lara, Venezuela",
+  // },
   {
-    icon: "mdi:location",
-    label: "location",
-    text: "Lara, Venezuela",
-  },
+    icon: "mdi:document",
+    text: "CV",
+    href: "https://drive.google.com/file/d/1YaYWnMHZ3g1xhToZIp3g3nnVXuLjF5-m/view?usp=sharing"
+  }
 ];
 ---
 
@@ -45,15 +50,14 @@ const CONTANT_INFO: {
   <div class="grid  sm:grid-cols-2 lg:grid-cols-1 flex-wrap gap-6 mt-6 border-t border-t-gray-400 pt-4">
     {
       CONTANT_INFO.map((info) => (
-        <div class="flex gap-3 items-center overflow-hidden">
+        <a href={info.href} rel="noopener noreferrer" target="_blank" class="flex gap-2 items-center overflow-hidden hover:bg-gray-500/20 rounded">
           <div class="rounded bg-gray-500/20 p-2">
             <Icon name={info.icon} size={22} class="text-primary" />
           </div>
-          <div class="flex flex-col">
-            <span class="text-xs text text-gray-300">{info.label}</span>
-            {<div class="text-sm" set:html={info.text} />}
+          <div class="flex flex-col text-ellipsis overflow-hidden">
+            <div class="text-sm text-ellipsis overflow-hidden" set:html={info.text} />
           </div>
-        </div>
+        </a>
       ))
     }
   </div>
