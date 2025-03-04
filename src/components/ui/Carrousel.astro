@@ -6,9 +6,8 @@ const { screenshots } = Astro.props;
   <div class="swiper-wrapper">
     {
       screenshots.map((image) => (
-        <div class="swiper-slide">
-          <img src={image} />
-        </div>
+          <img src={image} class="swiper-slide object-contain" />
+        
       ))
     }
   </div>

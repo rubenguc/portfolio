@@ -8,11 +8,13 @@ export const getProjectFolder = (folder: string) => {
 export const PROJECTS_IDs: Record<string, string> = {
   BATTLESHIP: "battleship",
   DOKKAN: "dokkanhp",
+  KURIAMIND: "kuriamind",
 };
 
 export const PROJECTS_FOLDER = {
   BATTLESHIP: getProjectFolder(PROJECTS_IDs.BATTLESHIP),
   DOKKAN: getProjectFolder(PROJECTS_IDs.DOKKAN),
+  KURIAMIND: getProjectFolder(PROJECTS_IDs.KURIAMIND),
 };
 
 export const getPhotosInFolder = (to: number, folder: string) => {
@@ -77,4 +79,21 @@ export const dokkanhp: Project = {
   technologies: [technologies.NEXTJS, technologies.MONGODB],
 };
 
-export const PROJECTS = [battleship, dokkanhp];
+export const kuriamind: Project = {
+  id: PROJECTS_IDs.KURIAMIND,
+  mainPhoto: PROJECTS_FOLDER.KURIAMIND + "1.jpg",
+  title: "Focus: Kuria Mind",
+  description:
+    "Kuria Mind is an Android application that allows users to manage app usage on their device. By creating blocks, users can select specific apps to restrict their execution and receive notifications about their activity.",
+  screenshots: getPhotosInFolder(6, PROJECTS_FOLDER.KURIAMIND),
+  links: [
+    {
+      type: PROJECT_TYPE.REPO,
+      title: "repo",
+      url: "https://github.com/rubenguc/kuriamind",
+    },
+  ],
+  technologies: [technologies.REACT_NATIVE, technologies.KOTLIN],
+};
+
+export const PROJECTS = [battleship, dokkanhp, kuriamind];
