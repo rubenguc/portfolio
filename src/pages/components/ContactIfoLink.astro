@@ -33,7 +33,11 @@ const getIcon = (key: string) => {
 
 {
     contactInfo?.platform === "email" ? (
-        <div class="group bg-gray-500/25 flex  items-center justify-between rounded-2xl py-1.5  px-2 lg:px-4 hover:bg-gray-500/50 cursor-pointer max-w-52 lg:max-w-60 overflow-hidden">
+        <div
+            id="email-contact-link"
+            data-email={contactInfo.label}
+            class="group bg-gray-500/25 flex relative items-center justify-between rounded-2xl py-1.5  px-2 lg:px-4 hover:bg-gray-500/50 cursor-pointer max-w-52 lg:max-w-60 overflow-hidden"
+        >
             <div class="flex items-center gap-2">
                 <Icon
                     name={getIcon(contactInfo.platform)}

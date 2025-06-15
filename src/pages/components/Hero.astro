@@ -4,6 +4,14 @@ import ContactInfoLink from "./ContactIfoLink.astro";
 ---
 
 <section id="home" class="h-dvh max-h-dvh flex py-4">
+    <div
+        id="copy-success-message"
+        class="flex top-5 left-1/2 opacity-0 invisible transition-opacity duration-300 ease-in-out transform translate-y-[-100% -translate-x-1/2 fixed items-center w-full max-w-xs p-4 text-gray-200 bg-gray-500 rounded-lg shadow-sm"
+        role="alert"
+    >
+        <div class="ps-4 text-sm font-normal">Email copied!</div>
+    </div>
+
     <div class="mx-auto container w-full px-10 lg:px-20 flex items-center">
         <div
             class="flex flex-col-reverse lg:flex-row justify-between gap-10 lg:gap-32 flex-1"
@@ -34,3 +42,27 @@ import ContactInfoLink from "./ContactIfoLink.astro";
         </div>
     </div>
 </section>
+
+<script is:inline>
+    const emailLink = document.getElementById("email-contact-link");
+    const successMessage = document.getElementById("copy-success-message");
+
+    if (emailLink && successMessage) {
+        emailLink.addEventListener("click", async () => {
+            const email = emailLink.dataset.email;
+            try {
+                await navigator.clipboard.writeText(email);
+
+                successMessage.classList.remove("opacity-0", "invisible");
+                successMessage.classList.add("opacity-100", "visible");
+
+                setTimeout(() => {
+                    successMessage.classList.remove("opacity-100", "visible");
+                    successMessage.classList.add("opacity-0", "invisible");
+                }, 2000);
+            } catch (err) {
+                console.error("Failed to copy email:", err);
+            }
+        });
+    }
+</script>
