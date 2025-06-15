@@ -33,14 +33,16 @@ const getIcon = (key: string) => {
 
 {
     contactInfo?.platform === "email" ? (
-        <div class="group bg-gray-500/25 flex  items-center justify-between rounded-2xl py-1.5  px-2 lg:px-4 hover:bg-gray-500/50 cursor-pointer max-w-52 overflow-hidden">
+        <div class="group bg-gray-500/25 flex  items-center justify-between rounded-2xl py-1.5  px-2 lg:px-4 hover:bg-gray-500/50 cursor-pointer max-w-52 lg:max-w-60 overflow-hidden">
             <div class="flex items-center gap-2">
                 <Icon
                     name={getIcon(contactInfo.platform)}
                     size={25}
                     class="text-slate-300"
                 />
-                <span class="text-slate-300 text-xs">{contactInfo.label}</span>
+                <span class="text-slate-300 text-xs lg:text-base">
+                    {contactInfo.label}
+                </span>
             </div>
             <Icon
                 name="copy"
@@ -52,7 +54,7 @@ const getIcon = (key: string) => {
         <a
             href={contactInfo?.link}
             target="_blank"
-            class="group bg-gray-500/25 flex  items-center justify-between rounded-2xl py-1.5  px-2 lg:px-4 hover:bg-gray-500/50 max-w-52 overflow-hidden"
+            class="group bg-gray-500/25 flex  items-center justify-between rounded-2xl py-1.5  px-2 lg:px-4 hover:bg-gray-500/50 max-w-52 lg:max-w-60 overflow-hidden"
         >
             <div class="flex items-center gap-2">
                 {contactInfo?.platform && (
@@ -62,7 +64,7 @@ const getIcon = (key: string) => {
                         class="text-slate-300"
                     />
                 )}
-                <span class="text-slate-300 text-xs text-nowrap">
+                <span class="text-slate-300 text-xs lg:text-base text-nowrap">
                     {contactInfo?.label}
                 </span>
             </div>
