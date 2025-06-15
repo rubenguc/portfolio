@@ -20,7 +20,7 @@ import ContactInfoLink from "./ContactIfoLink.astro";
                 <div class="grid grid-cols-2 gap-4 w-fit">
                     {
                         INFO.contactInfo.map((ci) => (
-                            <ContactInfoLink contactInfo={ci} />
+                            <ContactInfoLink contactInfo={ci || []} />
                         ))
                     }
                 </div>
