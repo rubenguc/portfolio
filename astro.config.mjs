@@ -1,17 +1,15 @@
+// @ts-check
 import { defineConfig } from "astro/config";
-
-import tailwind from "@astrojs/tailwind";
-
+import tailwindcss from "@tailwindcss/vite";
 import icon from "astro-icon";
 
-// https://astro.build/config
 export default defineConfig({
   integrations: [
-    tailwind(),
     icon({
-      include: {
-        mdi: ["*"],
-      },
+      iconDir: "public/icons",
     }),
   ],
+  vite: {
+    plugins: [tailwindcss()],
+  },
 });

@@ -1,0 +1,74 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface ContactInfo {
+    platform: string;
+    label: string;
+    link?: string; // link is optional as email doesn't have one
+}
+
+interface Props {
+    contactInfo: ContactInfo;
+}
+
+const { contactInfo } = Astro.props;
+
+const getIcon = (key: string) => {
+    switch (key) {
+        case "github":
+            return "github";
+        case "linkedin":
+            return "linkedin";
+        case "email":
+            return "mail";
+        case "cv":
+            return "file-cv";
+        case "whatsapp":
+            return "whatsapp";
+        default:
+            return "";
+    }
+};
+---
+
+{
+    contactInfo.platform === "email" ? (
+        <div class="group bg-gray-500/25 flex  items-center justify-between rounded-2xl py-1.5  px-2 lg:px-4 hover:bg-gray-500/50 cursor-pointer max-w-52 overflow-hidden">
+            <div class="flex items-center gap-2">
+                <Icon
+                    name={getIcon(contactInfo.platform)}
+                    size={25}
+                    class="text-slate-300"
+                />
+                <span class="text-slate-300 text-xs">{contactInfo.label}</span>
+            </div>
+            <Icon
+                name="copy"
+                size={20}
+                class="opacity-0 invisible group-hover:opacity-100 group-hover:visible"
+            />
+        </div>
+    ) : (
+        <a
+            href={contactInfo.link}
+            target="_blank"
+            class="group bg-gray-500/25 flex  items-center justify-between rounded-2xl py-1.5  px-2 lg:px-4 hover:bg-gray-500/50 max-w-52 overflow-hidden"
+        >
+            <div class="flex items-center gap-2">
+                <Icon
+                    name={getIcon(contactInfo.platform)}
+                    size={25}
+                    class="text-slate-300"
+                />
+                <span class="text-slate-300 text-xs text-nowrap">
+                    {contactInfo.label}
+                </span>
+            </div>
+            <Icon
+                name="external-link"
+                size={20}
+                class="opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300 ease-in-out text-gray-200 "
+            />
+        </a>
+    )
+}

@@ -1,0 +1,115 @@
+---
+import { Icon } from "astro-icon/components";
+import { INFO, TECHNOLOGIES, LINKS } from "../../info";
+
+const ICONS_PATH = "/technologies/";
+
+const getIcon = (tech: keyof typeof TECHNOLOGIES) => {
+    switch (tech) {
+        case TECHNOLOGIES.KOTLIN:
+            return ICONS_PATH + "Kotlin.svg";
+        case TECHNOLOGIES.REACT_NATIVE:
+            return ICONS_PATH + "React.svg";
+        case TECHNOLOGIES.MONGODB:
+            return ICONS_PATH + "MongoDB.svg";
+        case TECHNOLOGIES.NEXTJS:
+            return ICONS_PATH + "Next.js.svg";
+        default:
+            return "";
+    }
+};
+
+const getPlatform = (platform: keyof typeof LINKS) => {
+    switch (platform) {
+        case LINKS.GITHUB:
+            return "github";
+        case LINKS.PLAY_STORE:
+            return "google-play";
+        case LINKS.WEB:
+        case LINKS.WEB_DEMO:
+            return "web";
+        default:
+            return "";
+    }
+};
+---
+
+<section id="projects" class="py-10">
+    <div class="mx-auto container max-w-6xl w-full px-10 lg:px-20">
+        <div class="mx-auto items- mb-10">
+            <h2 class="text-4xl text-center mb-1">Personal Projects</h2>
+            <p class="text-gray-300 text-center">Proof of my knowledge</p>
+        </div>
+
+        <div class="flex flex-col gap-5">
+            {
+                INFO.personalProjects.map((pp) => (
+                    <div class="flex flex-col lg:flex-row p-2 lg:p-4 gap-4  lg:gap-10 bg-gray-950/30 border rounded-xl border-gray-200/20">
+                        <img
+                            src={pp.photo}
+                            alt={pp.title}
+                            class="flex-1 object-contain w-80 h-80 bg-black mx-auto lg:mx-0"
+                        />
+                        <div class="p-2 lg:p-0 lg:w-1/2 flex flex-col flex-1">
+                            <div class="flex flex-col flex-1 mb-5 lg:mb-0">
+                                <p class="text-xl lg:text-2xl mb-3 lg:mb-5">
+                                    {pp.title}
+                                </p>
+                                <p
+                                    class="text-gray-300 description text-sm lg:text-base mb-3"
+                                    set:html={pp.description}
+                                />
+                                <div class="flex gap-2 flex-wrap">
+                                    {pp.links.map((link) => (
+                                        <a
+                                            href={link.url}
+                                            target="_blank"
+                                            class="group bg-gray-500/25 flex  items-center justify-between rounded-2xl py-1.5  px-2 lg:px-4 hover:bg-gray-500/50 max-w-52 overflow-hidden"
+                                        >
+                                            <div class="flex items-center gap-2">
+                                                <Icon
+                                                    name={getPlatform(
+                                                        link.label as any,
+                                                    )}
+                                                    size={20}
+                                                    class="text-slate-300"
+                                                />
+                                                <span class="text-slate-300 text-xs text-nowrap mr-2">
+                                                    {link.label}
+                                                </span>
+                                            </div>
+                                            <Icon
+                                                name="external-link"
+                                                size={16}
+                                                class="opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300 ease-in-out text-gray-200 "
+                                            />
+                                        </a>
+                                    ))}
+                                </div>
+                            </div>
+                            <div class="flex gap-2 ">
+                                {pp.technologies.map((tech) => (
+                                    <img
+                                        src={getIcon(tech as any)}
+                                        alt={tech}
+                                        class="w-7 h-7 lg:w-8 lg:h-8"
+                                    />
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+    </div>
+</section>
+
+<style is:global>
+    .description > .embedded-link {
+        color: royalblue;
+    }
+
+    .description > .embedded-link:hover {
+        border-bottom: 1px solid royalblue;
+    }
+</style>

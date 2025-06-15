@@ -1,0 +1,35 @@
+---
+const TAGS = [
+    {
+        label: "Experience",
+        href: "/#experience",
+    },
+    {
+        label: "Projects",
+        href: "/#projects",
+    },
+];
+---
+
+<header
+    class="flex justify-center px-40 lg:py-10 border-b-0 lg:border-b-1 lg:border-b-slate-400/25"
+>
+    <div class="mx-auto text-slate-400">
+        <ul
+            class="flex md:space-x-6 mt-4 md:mt-0 gap-4 md:gap-0 text-md md:text-lg md:font-light"
+        >
+            {
+                TAGS.map((tag) => (
+                    <li>
+                        <a
+                            class="hover:text-slate-200 transition-colors text-gray-300"
+                            href={tag.href}
+                        >
+                            {tag.label}
+                        </a>
+                    </li>
+                ))
+            }
+        </ul>
+    </div>
+</header>

@@ -1,17 +1,27 @@
 ---
-import MainLayout from "../layouts/MainLayout.astro";
-import About from "../components/sections/About.astro";
-import Experience from "../components/sections/Experience.astro";
-import Portfolio from "../components/sections/Portfolio.astro";
-import Header from "../components/ui/header.astro";
+import "./styles.css";
+import Header from "./components/Header.astro";
+import Hero from "./components/Hero.astro";
+import WorkExperience from "./components/WorkExperience.astro";
+import PersonalProjects from "./components/PersonalProjects.astro";
+import Footer from "./components/Footer.astro";
 ---
 
-<Header />
-
-<MainLayout>
-  <div class="flex flex-col gap-10">
-    <About />
-    <Experience />
-    <Portfolio />
-  </div>
-</MainLayout>
+<html lang="en" class="scroll-smooth">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+        <title>Ruben Gutierrez</title>
+    </head>
+    <body>
+        <Header />
+        <main>
+            <Hero />
+            <WorkExperience />
+            <PersonalProjects />
+        </main>
+        <Footer />
+    </body>
+</html>

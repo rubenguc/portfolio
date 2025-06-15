@@ -1,0 +1,32 @@
+---
+import { INFO } from "../../info";
+---
+
+<section id="experience" class="py-10">
+    <div class="mx-auto container max-w-6xl w-full px-10 lg:px-20">
+        <div class="mx-auto items-center mb-10">
+            <h2 class="text-4xl text-center">Work Experience</h2>
+        </div>
+
+        <div class="flex flex-col gap-5">
+            {
+                INFO.workExperiences.map((we) => (
+                    <div class="p-2 lg:px-5 py-3 bg-gray-950/30 border rounded-xl border-gray-200/20">
+                        <h3 class="flex gap-x-1.5 font-semibold text-slate-100 text-xl lg:text-3xl">
+                            {we.company}
+                        </h3>
+                        <span class="text-gray-300 text-xs lg:text-base">
+                            {we.position} | {we.period}
+                        </span>
+
+                        <ul class="flex flex-col gap-1 mt-4 list-disc px-5 text-base">
+                            {we.responsibilities.map((r) => (
+                                <li class="text-gray-300">{r}</li>
+                            ))}
+                        </ul>
+                    </div>
+                ))
+            }
+        </div>
+    </div>
+</section>
