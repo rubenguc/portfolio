@@ -13,30 +13,21 @@ export const LINKS = {
 };
 
 export const INFO = {
-  hello: "Hi, I'm Rubén Gutiérrez",
+  hello: "Hi, I'm Rubén",
   heroDescriptions:
-    "Software Engineer specialized in web application development using React and Node. I focus on building useful and functional products that deliver effective and scalable digital experiences.",
+    "Software Engineer with +5 years specialized in web application development using React and Node. I focus on building useful and functional products that deliver effective and scalable digital experiences.",
   heroPhoto: "/photo.jpeg",
+  email: "rubdeivis@gmail.com",
   contactInfo: [
-    {
-      platform: "linkedin",
-      link: "https://www.linkedin.com/in/rubengutierrezc/",
-      label: "rubengutierrezc",
-    },
     {
       platform: "github",
       link: "https://github.com/rubenguc",
       label: "rubenguc",
     },
     {
-      platform: "email",
-      link: "rubdeivis@gmail.com",
-      label: "rubdeivis@gmail.com",
-    },
-    {
-      platform: "whatsapp",
-      link: "https://wa.me/584120234481",
-      label: "Contact me",
+      platform: "linkedin",
+      link: "https://www.linkedin.com/in/rubengutierrezc/",
+      label: "rubengutierrezc",
     },
     {
       platform: "cv",
@@ -113,16 +104,21 @@ export const INFO = {
       description:
         "Kuria Mind is an Android application that allows users to manage app usage on their device. By creating blocks, users can select specific apps to restrict their execution and receive notifications about their activity.",
       photo: "projects/kuriamind.jpg",
-      links: [
-        {
-          label: LINKS.GITHUB,
-          url: "https://github.com/rubenguc/kuriamind",
-        },
-        {
-          label: LINKS.PLAY_STORE,
-          url: "https://play.google.com/store/apps/details?id=com.kuriamind",
-        },
-      ],
+      github_url: "https://github.com/rubenguc/kuriamind",
+      link: {
+        type: LINKS.PLAY_STORE,
+        url: "https://play.google.com/store/apps/details?id=com.kuriamind",
+      },
+      // links: [
+      //   {
+      //     label: LINKS.GITHUB,
+      //     url: "https://github.com/rubenguc/kuriamind",
+      //   },
+      //   {
+      //     label: LINKS.PLAY_STORE,
+      //     url: "https://play.google.com/store/apps/details?id=com.kuriamind",
+      //   },
+      // ],
       technologies: [TECHNOLOGIES.REACT_NATIVE, TECHNOLOGIES.KOTLIN],
     },
     {
@@ -130,16 +126,22 @@ export const INFO = {
       description: `Database for the hidden potential of characters of dokkan battle.
      The hidden potentials on the web may not be the best for any character; these are based on <a class="embedded-link" href="https://www.youtube.com/playlist?list=PL96oiZRZyU_Mm3z4WiVp7wfp1H4IFYV9Y" target="_blank">Playmaker's guides</a>`,
       photo: "projects/dokkanhp.jpg",
-      links: [
-        {
-          label: LINKS.GITHUB,
-          url: "https://github.com/rubenguc/dokkan-hidden-potentials",
-        },
-        {
-          label: LINKS.WEB,
-          url: "https://dokkan-hidden-potentials.vercel.app/",
-        },
-      ],
+      github_url: "https://github.com/rubenguc/dokkan-hidden-potentials",
+      link: {
+        type: LINKS.WEB,
+        url: "https://dokkan-hidden-potentials.vercel.app/",
+      },
+      // links: [
+      //
+      //   {
+      //     label: LINKS.GITHUB,
+      //     url: "https://github.com/rubenguc/dokkan-hidden-potentials",
+      //   },
+      //   {
+      //     label: LINKS.WEB,
+      //     url: "https://dokkan-hidden-potentials.vercel.app/",
+      //   },
+      // ],
       technologies: [TECHNOLOGIES.NEXTJS, TECHNOLOGIES.MONGODB],
     },
     {
@@ -147,16 +149,21 @@ export const INFO = {
       description:
         "bxzella is a platform designed to help traders analyze their performance by integrating with the BingX API. It allows users to view their transaction history, open positions, and track key trading statistics to make informed decisions and improve their strategies.",
       photo: "projects/bxzella.jpg",
-      links: [
-        {
-          label: LINKS.GITHUB,
-          url: "https://github.com/rubenguc/bxzella",
-        },
-        {
-          label: LINKS.WEB_DEMO,
-          url: "https://bxzella-demo.vercel.app/",
-        },
-      ],
+      github_url: "https://github.com/rubenguc/bxzella",
+      link: {
+        type: LINKS.WEB_DEMO,
+        url: "https://bxzella-demo.vercel.app/",
+      },
+      // links: [
+      //   {
+      //     label: LINKS.GITHUB,
+      //     url: "https://github.com/rubenguc/bxzella",
+      //   },
+      //   {
+      //     label: LINKS.WEB_DEMO,
+      //     url: "https://bxzella-demo.vercel.app/",
+      //   },
+      // ],
       technologies: [TECHNOLOGIES.NEXTJS, TECHNOLOGIES.MONGODB],
     },
   ],
