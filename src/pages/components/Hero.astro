@@ -12,11 +12,13 @@ import { fade } from "astro:transitions";
         >
             <div class="md:flex-3/4">
                 <h1
-                    class="text-zinc-900 font-semibold text-3xl md:text-5xl mb-5"
+                    class="text-zinc-900 font-semibold text-3xl md:text-5xl mb-5 dark:text-zinc-100"
                 >
                     {INFO.hello}
                 </h1>
-                <p class="text-zinc-600 md:text-lg leading-relaxed">
+                <p
+                    class="text-zinc-600 md:text-lg leading-relaxed dark:text-zinc-300"
+                >
                     {INFO.heroDescriptions}
                 </p>
 
@@ -25,7 +27,7 @@ import { fade } from "astro:transitions";
                         href={`mailto:${INFO.email}`}
                         target="_blank"
                         role="button"
-                        class="flex w-full font-bold items-center justify-center bg-zinc-900 hover:bg-zinc-700 text-white px-5 py-4 rounded-2xl hover:scale-105 transition-all cursor-pointer space-x-3"
+                        class="flex w-full font-bold items-center justify-center bg-zinc-900 dark:bg-zinc-200 hover:bg-zinc-700 hover:dark:bg-zinc-100 text-white dark:text-zinc-900 px-5 py-4 rounded-2xl hover:scale-105 transition-all cursor-pointer space-x-3"
                     >
                         <Mail />
                         <span>Contact me</span>
@@ -35,7 +37,7 @@ import { fade } from "astro:transitions";
                         <button
                             id="email-contact-link"
                             data-email={INFO.email}
-                            class="flex font-bold w-full items-center justify-center border border-zinc-700 hover:opacity-70 text-zinc-700 px-5 py-4 rounded-2xl hover:scale-105 transition-all cursor-pointer space-x-3"
+                            class="flex font-bold w-full items-center justify-center border border-zinc-700 dark:border-zinc-200 hover:opacity-70 text-zinc-700 dark:text-zinc-100 px-5 py-4 rounded-2xl hover:scale-105 transition-all cursor-pointer space-x-3"
                         >
                             <Copy />
                             <span>Copy email</span>

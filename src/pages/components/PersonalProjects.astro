@@ -38,7 +38,9 @@ const getPlatform = (platform: keyof typeof LINKS) => {
 <section id="projects" class="py-10 md:py-14">
     <div class="w-full px-8 fade-element delay-2">
         <div class="mb-7">
-            <h2 class="text-3xl md:text-4xl text-zinc-900 font-semibold">
+            <h2
+                class="text-3xl md:text-4xl text-zinc-900 dark:text-zinc-100 font-semibold"
+            >
                 Projects
             </h2>
         </div>
@@ -46,7 +48,7 @@ const getPlatform = (platform: keyof typeof LINKS) => {
         <div class="flex flex-col gap-10">
             {
                 INFO.personalProjects.map((pp) => (
-                    <div class="flex flex-col p-2 lg:p-4 gap-4  lg:gap-10 border rounded-xl border-zinc-200">
+                    <div class="flex flex-col p-2 lg:p-4 gap-4  lg:gap-10 border rounded-xl border-zinc-200 dark:border-zinc-400">
                         <img
                             src={pp.photo}
                             alt={pp.title}
@@ -59,7 +61,7 @@ const getPlatform = (platform: keyof typeof LINKS) => {
                                         <a
                                             href={pp.link.url}
                                             target="_blank"
-                                            class="hover:scale-105 hover:opacity-70 text-zinc-900 transition-all flex items-center gap-1 md:text-xl"
+                                            class="hover:scale-105 hover:opacity-70 text-zinc-900 dark:text-zinc-100 transition-all flex items-center gap-1 md:text-xl"
                                         >
                                             <img
                                                 src={`/icons/${getPlatform(
@@ -68,12 +70,12 @@ const getPlatform = (platform: keyof typeof LINKS) => {
                                                 width={18}
                                                 height={18}
                                             />
-                                            <p class="font-semibold  text-zinc-900">
+                                            <p class="font-semibold">
                                                 {pp.title}
                                             </p>
                                             <ExternalLink
                                                 size={15}
-                                                class="text-zinc-500"
+                                                class="text-zinc-500 dark:text-zinc-400"
                                             />
                                         </a>
                                     ) : (
@@ -87,14 +89,14 @@ const getPlatform = (platform: keyof typeof LINKS) => {
                                             href={pp.github_url}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            class="hover:scale-105 hover:opacity-70 text-zinc-900 transition-all"
+                                            class="hover:scale-105 hover:opacity-70 text-zinc-900 dark:text-zinc-300 transition-all"
                                         >
                                             <Github />
                                         </a>
                                     )}
                                 </div>
                                 <p
-                                    class="text-zinc-600 description text-sm lg:text-base mb-3"
+                                    class="text-zinc-600 dark:text-zinc-300 description text-sm lg:text-base mb-3"
                                     set:html={pp.description}
                                 />
                             </div>
