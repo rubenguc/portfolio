@@ -5,8 +5,10 @@
       "name": "portfolio",
       "dependencies": {
         "@lucide/astro": "^0.525.0",
-        "@tailwindcss/vite": "^4.1.10",
         "astro": "^5.9.3",
+      },
+      "devDependencies": {
+        "@tailwindcss/vite": "^4.1.10",
         "tailwindcss": "^4.1.10",
       },
     },

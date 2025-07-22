@@ -1,5 +1,5 @@
 ---
-import { House, Github, Linkedin, FileUser, Icon, Sun, Moon } from "@lucide/astro";
+import { House, Github, Linkedin, FileUser,  Sun, Moon } from "@lucide/astro";
 import { INFO } from "../../info";
 
 const getIcon = (platform: string) => {
@@ -55,7 +55,7 @@ const getIcon = (platform: string) => {
         html.classList.remove('dark');
     }
 
-    themeToggleBtn.addEventListener('click', () => {
+    themeToggleBtn?.addEventListener('click', () => {
         if (html.classList.contains('dark')) {
             html.classList.remove('dark');
             localStorage.theme = 'light';

@@ -1,7 +1,6 @@
 ---
-import { Icon } from "@lucide/astro";
-import { INFO, TECHNOLOGIES, LINKS } from "../../info";
-import { Github, ExternalLink } from "@lucide/astro";
+import { INFO, TECHNOLOGIES } from "../../info";
+import { ExternalLink, Github } from "@lucide/astro";
 
 const ICONS_PATH = "/technologies/";
 
@@ -15,20 +14,6 @@ const getIcon = (tech: keyof typeof TECHNOLOGIES) => {
             return ICONS_PATH + "MongoDB.svg";
         case TECHNOLOGIES.NEXTJS:
             return ICONS_PATH + "Next.js.svg";
-        default:
-            return "";
-    }
-};
-
-const getPlatform = (platform: keyof typeof LINKS) => {
-    switch (platform) {
-        case LINKS.GITHUB:
-            return "github.svg";
-        case LINKS.PLAY_STORE:
-            return "google-play.svg";
-        case LINKS.WEB:
-        case LINKS.WEB_DEMO:
-            return "web.svg";
         default:
             return "";
     }
@@ -63,13 +48,6 @@ const getPlatform = (platform: keyof typeof LINKS) => {
                                             target="_blank"
                                             class="hover:scale-105 hover:opacity-70 text-zinc-900 dark:text-zinc-100 transition-all flex items-center gap-1 md:text-xl"
                                         >
-                                            <img
-                                                src={`/icons/${getPlatform(
-                                                    pp.link.type as any,
-                                                )}`}
-                                                width={18}
-                                                height={18}
-                                            />
                                             <p class="font-semibold">
                                                 {pp.title}
                                             </p>
@@ -96,11 +74,11 @@ const getPlatform = (platform: keyof typeof LINKS) => {
                                     )}
                                 </div>
                                 <p
-                                    class="text-zinc-600 dark:text-zinc-300 description text-sm lg:text-base mb-3"
+                                    class="text-zinc-600 dark:text-zinc-300 description text-sm lg:text-base py-2"
                                     set:html={pp.description}
                                 />
                             </div>
-                            <div class="flex gap-2 ">
+                            <div class="flex gap-2">
                                 {pp.technologies.map((tech) => (
                                     <img
                                         src={getIcon(tech as any)}

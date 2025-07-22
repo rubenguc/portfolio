@@ -109,16 +109,6 @@ export const INFO = {
         type: LINKS.PLAY_STORE,
         url: "https://play.google.com/store/apps/details?id=com.kuriamind",
       },
-      // links: [
-      //   {
-      //     label: LINKS.GITHUB,
-      //     url: "https://github.com/rubenguc/kuriamind",
-      //   },
-      //   {
-      //     label: LINKS.PLAY_STORE,
-      //     url: "https://play.google.com/store/apps/details?id=com.kuriamind",
-      //   },
-      // ],
       technologies: [TECHNOLOGIES.REACT_NATIVE, TECHNOLOGIES.KOTLIN],
     },
     {
@@ -131,17 +121,6 @@ export const INFO = {
         type: LINKS.WEB,
         url: "https://dokkan-hidden-potentials.vercel.app/",
       },
-      // links: [
-      //
-      //   {
-      //     label: LINKS.GITHUB,
-      //     url: "https://github.com/rubenguc/dokkan-hidden-potentials",
-      //   },
-      //   {
-      //     label: LINKS.WEB,
-      //     url: "https://dokkan-hidden-potentials.vercel.app/",
-      //   },
-      // ],
       technologies: [TECHNOLOGIES.NEXTJS, TECHNOLOGIES.MONGODB],
     },
     {
@@ -154,16 +133,6 @@ export const INFO = {
         type: LINKS.WEB_DEMO,
         url: "https://bxzella-demo.vercel.app/",
       },
-      // links: [
-      //   {
-      //     label: LINKS.GITHUB,
-      //     url: "https://github.com/rubenguc/bxzella",
-      //   },
-      //   {
-      //     label: LINKS.WEB_DEMO,
-      //     url: "https://bxzella-demo.vercel.app/",
-      //   },
-      // ],
       technologies: [TECHNOLOGIES.NEXTJS, TECHNOLOGIES.MONGODB],
     },
   ],
