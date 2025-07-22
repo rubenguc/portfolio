@@ -64,6 +64,7 @@ const getIcon = (tech: keyof typeof TECHNOLOGIES) => {
 
                                     {pp.github_url && (
                                         <a
+                                            aria-label={`View ${pp.title} on GitHub`}
                                             href={pp.github_url}
                                             target="_blank"
                                             rel="noopener noreferrer"

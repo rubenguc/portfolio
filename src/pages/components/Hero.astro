@@ -1,8 +1,8 @@
 ---
 import { INFO } from "../../info";
-import ContactInfoLink from "./ContactIfoLink.astro";
 import { Copy, Mail } from "@lucide/astro";
-import { fade } from "astro:transitions";
+import { Image } from "astro:assets";
+import ProfilePhoto from "../../assets/photo.jpeg";
 ---
 
 <section id="home" class="flex py-10 md:py-20">
@@ -54,11 +54,16 @@ import { fade } from "astro:transitions";
                 </div>
             </div>
 
-            <img
-                class="rounded-full md:flex-1/4 h-60 mx-auto aspect-square bg-gray-600"
-                src={"photo.jpeg"}
-                alt={"ruben gutierrez"}
-            />
+            <div class="md:flex-1/4">
+                <Image
+                    loading="eager"
+                    width={240}
+                    height={240}
+                    class="rounded-full mx-auto"
+                    src={ProfilePhoto}
+                    alt={"Ruben gutierrez photo"}
+                />
+            </div>
         </div>
     </div>
 </section>

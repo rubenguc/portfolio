@@ -20,27 +20,27 @@ const getIcon = (platform: string) => {
     class="sticky top-0 z-10 w-full py-4 px-2"
 >
     <div class="backdrop-blur-sm mx-auto bg-white/65 dark:bg-[#121212] flex items-center justify-between w-fit border rounded-xl border-zinc-200 dark:border-zinc-400 p-3">
-        <a href="/" class="hover:opacity-70 hover:scale-105 transition-transform dark:text-zinc-300">
+        <a href="/" class="hover:opacity-70 hover:scale-105 transition-transform dark:text-zinc-300" aria-label="home">
             <House size={23} stroke-width={1.8} />
         </a>
         <div class="w-px h-5 bg-zinc-200 dark:text-zinc-300  mx-6"></div>
         <div class="flex items-center justify-center space-x-8">
             {
                 INFO.contactInfo.map((social) => (
-                    <a href={social.link} target="_blank" class="hover:opacity-60 hover:scale-110 transition-transform dark:text-zinc-300">
-                        <span class="sr-only transform transition-colors hover:text-slate-200">
-                            {social.label}
-                        </span>
+                    <a href={social.link} target="_blank" aria-label={`${social.label} link`} class="hover:opacity-60 hover:scale-110 transition-transform dark:text-zinc-300">
+                            <span class="sr-only transform transition-colors hover:text-slate-200">
+                                {social.label}
+                            </span>
 
-                        {<getIcon(social.platform) size={23} stroke-width={1.8}></getIcon>}
-                    </a>
-                ))
-            }
-        <button id="theme-toggle" class="hover:opacity-60 hover:scale-110 transition-transform dark:text-zinc-300">
-            <Sun size={23} stroke-width={1.8} class="dark:hidden"/>
-            <Moon size={23} stroke-width={1.8} class="hidden dark:block"/>
-        </button>
-        </div>
+                            {<getIcon(social.platform) size={23} stroke-width={1.8}></getIcon>}
+                        </a>
+                    ))
+                }
+            <button id="theme-toggle" aria-label="Toggle theme" class="hover:opacity-60 hover:scale-110 transition-transform dark:text-zinc-300">
+                <Sun size={23} stroke-width={1.8} class="dark:hidden"/>
+                <Moon size={23} stroke-width={1.8} class="hidden dark:block"/>
+            </button>
+            </div>
     </div>
 </header>
 
@@ -48,7 +48,6 @@ const getIcon = (platform: string) => {
     const themeToggleBtn = document.getElementById('theme-toggle');
     const html = document.documentElement;
 
-    // Set initial theme based on browser preference
     if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
         html.classList.add('dark');
     } else {
