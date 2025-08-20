@@ -55,16 +55,16 @@ const hasMore = workExperiences.length > initialCount;
                         class="py-3 hidden fade-element"
                         data-experience="more"
                     >
-                        <h3 class="flex gap-x-1.5 font-semibold text-zinc-700 text-xl lg:text-3xl">
+                        <h3 class="flex gap-x-1.5 font-semibold text-zinc-700 dark:text-zinc-300 text-xl lg:text-3xl">
                             {we.position}
                         </h3>
-                        <span class="flex gap-x-1.5 font-semibold text-zinc-700 ">
+                        <span class="flex gap-x-1.5 font-semibold text-zinc-700 dark:text-zinc-300 text-xl lg:text-3xl">
                             {we.company}
                         </span>
-                        <span class="text-xs lg:text-base block">
+                        <span class="text-xs lg:text-base block text-zinc-700 dark:text-zinc-300">
                             {we.period}
                         </span>
-                        <ul class="flex flex-col gap-1 mt-4 list-disc px-3.5 text-base text-zinc-600">
+                        <ul class="flex flex-col gap-1 mt-4 list-disc px-3.5 text-base text-zinc-600 dark:text-zinc-300">
                             {we.responsibilities.map((r) => (
                                 <li>{r}</li>
                             ))}
