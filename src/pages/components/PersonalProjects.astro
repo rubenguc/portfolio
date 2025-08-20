@@ -33,13 +33,16 @@ const getIcon = (tech: keyof typeof TECHNOLOGIES) => {
         <div class="flex flex-col gap-10">
             {
                 INFO.personalProjects.map((pp) => (
-                    <div class="flex flex-col p-2 lg:p-4 gap-4  lg:gap-10 border rounded-xl border-zinc-200 dark:border-zinc-400">
+                    <div
+                        class={`flex flex-col lg:gap-10 border rounded-xl border-zinc-200 dark:border-zinc-600 overflow-hidden bg-gradient-to-b from-transparent via-transparent via-34% to-white dark:to-[#121212] to-65%`}
+                        style={`background-color: ${pp.color}`}
+                    >
                         <img
                             src={pp.photo}
                             alt={pp.title}
-                            class="flex-1 object-contain w-full h-80 max-h-72  mx-auto"
+                            class="flex-1 object-contain w-full h-40 md:h-80  max-h-80  mx-auto"
                         />
-                        <div class="p-2 lg:p-0  flex flex-col flex-1">
+                        <div class="p-4  flex flex-col flex-1 ">
                             <div class="flex flex-col flex-1 mb-5 lg:mb-0">
                                 <div class="flex justify-between items-center flex-wrap mb-3">
                                     {pp.link ? (

@@ -103,37 +103,40 @@ export const INFO = {
       title: "Focus: Kuria Mind",
       description:
         "Kuria Mind is an Android application that allows users to manage app usage on their device. By creating blocks, users can select specific apps to restrict their execution and receive notifications about their activity.",
-      photo: "projects/kuriamind.jpg",
+      photo: "projects/kuriamind.png",
       github_url: "https://github.com/rubenguc/kuriamind",
       link: {
         type: LINKS.PLAY_STORE,
         url: "https://play.google.com/store/apps/details?id=com.kuriamind",
       },
       technologies: [TECHNOLOGIES.REACT_NATIVE, TECHNOLOGIES.KOTLIN],
-    },
-    {
-      title: "Dokkan hidden potentials",
-      description: `Database for the hidden potential of characters of dokkan battle.
-     The hidden potentials on the web may not be the best for any character; these are based on <a class="embedded-link" href="https://www.youtube.com/playlist?list=PL96oiZRZyU_Mm3z4WiVp7wfp1H4IFYV9Y" target="_blank">Playmaker's guides</a>`,
-      photo: "projects/dokkanhp.jpg",
-      github_url: "https://github.com/rubenguc/dokkan-hidden-potentials",
-      link: {
-        type: LINKS.WEB,
-        url: "https://dokkan-hidden-potentials.vercel.app/",
-      },
-      technologies: [TECHNOLOGIES.NEXTJS, TECHNOLOGIES.MONGODB],
+      color: "#1d71d7",
     },
     {
       title: "BXZella",
       description:
         "bxzella is a platform designed to help traders analyze their performance by integrating with the BingX API. It allows users to view their transaction history, open positions, and track key trading statistics to make informed decisions and improve their strategies.",
-      photo: "projects/bxzella.jpg",
+      photo: "projects/bxzella.png",
       github_url: "https://github.com/rubenguc/bxzella",
       link: {
         type: LINKS.WEB_DEMO,
         url: "https://bxzella-demo.vercel.app/",
       },
       technologies: [TECHNOLOGIES.NEXTJS, TECHNOLOGIES.MONGODB],
+      color: "#30b6ee",
+    },
+    {
+      title: "Dokkan hidden potentials",
+      description: `Database for the hidden potential of characters of dokkan battle.
+     The hidden potentials on the web may not be the best for any character; these are based on <a class="embedded-link" href="https://www.youtube.com/playlist?list=PL96oiZRZyU_Mm3z4WiVp7wfp1H4IFYV9Y" target="_blank">Playmaker's guides</a>`,
+      photo: "projects/dokkanhp.png",
+      github_url: "https://github.com/rubenguc/dokkan-hidden-potentials",
+      link: {
+        type: LINKS.WEB,
+        url: "https://dokkan-hidden-potentials.vercel.app/",
+      },
+      technologies: [TECHNOLOGIES.NEXTJS, TECHNOLOGIES.MONGODB],
+      color: "#5fa442",
     },
   ],
 };

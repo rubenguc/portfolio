@@ -26,3 +26,9 @@ body {
 .delay-2 {
     transition-delay: 0.2s;
 }
+
+@theme static {
+    --color-kuriamind: #1d71d7;
+    --color-bxzella: #30b6ee;
+    --color-dokkanhp: #30b6ee;
+}
