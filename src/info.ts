@@ -42,21 +42,20 @@ export const INFO = {
       period: "January 2021 - Present",
       responsibilities: [
         "Developed a real-time patient management platform with 5 modules built in React, a mobile app in React Native, and Node.js and Socket.IO for real-time communication. Reducing manual tasks, exam scheduling, digital access to results and wait times through automated SMS alerts (Twillio) and self-service access to exam results.",
-        "Built a QR-based student ID system using React and Firebase for payment validation and meal tracking, managing 400+ users (students and school staff) with secure QR generation and scanning functionality.",
+        "Built a QR-based student ID system using React and Firebase for payment validation and meal tracking, managing 400+ users with secure QR generation and scanning functionality.",
       ],
     },
     {
       company: "Blockcoders",
-      position: "Software Engineer",
+      position: "Full Stack Developer",
       period: "August 2022 - June 2024",
       responsibilities: [
-        "Built a crypto wallet browser extension, delivering 4 milestones funded by the Web3 Foundation (>$7k each) with unit tests written in Vitest achieving over 90% coverage.",
-        "Migrated a DeFi platform to a monorepo architecture using TurboRepo, unifying Next.js and NestJS + GraphQL. Modernized UI components, completed core features, and implemented token staking functionality with secure on-chain interactions via Ethers.js/Viem and real-time pricing via CoinGecko API.",
-        "Won two Web3 hackathons (>$5k each) by developing web applications with Next.js and wallet integrations.",
-        "Developed a Node.js SDK to send XCM (Cross-Consensus Messaging) transactions on the Polkadot network, securing 4 milestones approved by the Web3 Foundation (>$10k each).",
-        "Created a smart contract explorer for Polkadot-based chains. Implemented batch processing to sync over 3 million blocks and optimized data retrieval through indexing in MongoDB. Delivered 2 funded milestones (>$2k each) with 90%+ test coverage using Jest.",
-        "Assisted in fixing a race condition bug in Zombienet, an open-source tool used to run and test Polkadot nodes.",
-        "Managed end-to-end deployments of frontend and backend services on DigitalOcean, using Docker and GitHub Actions for CI/CD.",
+        "Built a crypto wallet browser extension using React and TypeScript, delivering 4 milestones funded by the Web3 Foundation (>$10k total) with unit tests in Vitest achieving over 90% coverage.",
+        "Migrated a DeFi platform to a TurboRepo monorepo (Next.js + NestJS/GraphQL) and optimized external API handlers, significantly reducing operational costs and improving system maintainability.",
+        "Won two Web3 hackathons (>$10k in prizes) by developing high-performance applications with advanced blockchain integrations.",
+        "Developed a Node.js SDK for XCM (Cross-Consensus Messaging) on Polkadot, successfully delivering 4 milestones funded by the Web3 Foundation (>$20k total).",
+        "Engineered a custom Smart Contract Explorer, delivering multiple funded milestones by the Web3 Foundation (>$2k each); synchronized and queried over 3 million blocks from Polkadot-based chains while maintaining 90%+ test coverage and utilizing MongoDB indexing.",
+        "Managed full-cycle deployments on DigitalOcean using Docker and GitHub Actions to automate CI/CD pipelines and ensure 24/7 availability.",
       ],
     },
     {
@@ -115,19 +114,6 @@ export const INFO = {
       },
       technologies: [TECHNOLOGIES.NEXTJS, TECHNOLOGIES.MONGODB],
       color: "#30b6ee",
-    },
-    {
-      title: "Dokkan hidden potentials",
-      description: `Database for the hidden potential of characters of dokkan battle.
-     The hidden potentials on the web may not be the best for any character; these are based on <a class="embedded-link" href="https://www.youtube.com/playlist?list=PL96oiZRZyU_Mm3z4WiVp7wfp1H4IFYV9Y" target="_blank">Playmaker's guides</a>`,
-      photo: "projects/dokkanhp.png",
-      github_url: "https://github.com/rubenguc/dokkan-hidden-potentials",
-      link: {
-        type: LINKS.WEB,
-        url: "https://dokkan-hidden-potentials.vercel.app/",
-      },
-      technologies: [TECHNOLOGIES.NEXTJS, TECHNOLOGIES.MONGODB],
-      color: "#5fa442",
     },
   ],
 };
