@@ -108,7 +108,7 @@ export const INFO = {
         url: "https://www.npmjs.com/package/xcm-sdk",
       },
       links: [{ url: "https://github.com/blockcoders/xcm-sdk" }],
-      TECHNOLOGIES: [TECHNOLOGIES.NODE_JS],
+      TECHNOLOGIES: [TECHNOLOGIES.NODE_JS, TECHNOLOGIES.TYPESCRIPT],
     },
     {
       title: "ink-explorer",

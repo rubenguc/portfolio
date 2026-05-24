@@ -78,7 +78,7 @@ const cvUrl = INFO.contactInfo.find((s) => s.platform === "cv")?.link ?? "#";
                         aria-label="GitHub profile"
                     >
                         <Github size={18} stroke-width={1.8} class="shrink-0" />
-                        <span class="text-sm font-medium overflow-hidden whitespace-nowrap max-w-0 group-hover:max-w-[120px] transition-all duration-300 ease-out">
+                        <span class="text-sm font-medium overflow-hidden whitespace-nowrap max-sm:max-w-none max-w-0 group-hover:max-w-[120px] transition-all duration-300 ease-out">
                             GitHub
                         </span>
                     </a>
@@ -92,7 +92,7 @@ const cvUrl = INFO.contactInfo.find((s) => s.platform === "cv")?.link ?? "#";
                         aria-label="LinkedIn profile"
                     >
                         <Linkedin size={18} stroke-width={1.8} class="shrink-0" />
-                        <span class="text-sm font-medium overflow-hidden whitespace-nowrap max-w-0 group-hover:max-w-[120px] transition-all duration-300 ease-out">
+                        <span class="text-sm font-medium overflow-hidden whitespace-nowrap max-sm:max-w-none max-w-0 group-hover:max-w-[120px] transition-all duration-300 ease-out">
                             LinkedIn
                         </span>
                     </a>
@@ -106,8 +106,8 @@ const cvUrl = INFO.contactInfo.find((s) => s.platform === "cv")?.link ?? "#";
                         aria-label="View CV"
                     >
                         <FileUser size={18} stroke-width={1.8} class="shrink-0" />
-                        <span class="text-sm font-medium overflow-hidden whitespace-nowrap max-w-0 group-hover:max-w-[120px] transition-all duration-300 ease-out">
-                            Resume
+                        <span class="text-sm font-medium overflow-hidden whitespace-nowrap max-sm:max-w-none max-w-0 group-hover:max-w-[120px] transition-all duration-300 ease-out">
+                            CV
                         </span>
                     </a>
                 </div>
