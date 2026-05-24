@@ -3,19 +3,16 @@ export const TECHNOLOGIES = {
   KOTLIN: "Kotlin",
   NEXTJS: "Next.js",
   MONGODB: "MongoDB",
-};
-
-export const LINKS = {
-  GITHUB: "Github",
-  PLAY_STORE: "Play Store",
-  WEB: "Web",
-  WEB_DEMO: "Web (Demo)",
+  REACT: "React",
+  TYPESCRIPT: "Typescript",
+  NEST_JS: "NestJS",
+  NODE_JS: "Node.js",
 };
 
 export const INFO = {
   hello: "Hi, I'm Rubén",
   heroDescriptions:
-    "Software Engineer with over 4 years of experience focused on React, Node.js, and TypeScript. I focus on building useful and functional products that deliver effective and scalable digital experiences.",
+    "Software Engineer with over 5 years of experience focused on React, Node.js, and TypeScript. I focus on building useful and functional products that deliver effective and scalable digital experiences.",
   heroPhoto: "/photo.jpeg",
   email: "rubdeivis@gmail.com",
   contactInfo: [
@@ -74,7 +71,7 @@ export const INFO = {
       position: "Backend Developer",
       period: "October 2021 - May 2022",
       responsibilities: [
-        "Participated in the migration of a maritime port management system’s backend to Node.js, improving maintainability and scalability while leveraging PostgreSQL with stored procedures for complex data operations and transaction integrity.",
+        "Participated in the migration of a maritime port management system's backend to Node.js, improving maintainability and scalability while leveraging PostgreSQL with stored procedures for complex data operations and transaction integrity.",
         "Built an API to import and process data from Excel files, streamlining bulk data uploads and improving system automation.",
       ],
     },
@@ -88,17 +85,76 @@ export const INFO = {
       ],
     },
   ],
+  clientAndCompanyProjects: [
+    {
+      title: "Kuma wallet",
+      description:
+        "A non-custodial Web3 browser extension built with React and TypeScript, enabling seamless asset management and dApp interactions across EVM and Polkadot/Kusama networks.",
+      photo: "projects/kuma-wallet.svg",
+      mainLink: {
+        name: "Website",
+        url: "https://chromewebstore.google.com/detail/kuma-wallet/hbinmkhlebcnghpikoekkbeljbealbje?pli=1",
+      },
+      links: [{ url: "https://github.com/kumawallet/extension" }],
+      TECHNOLOGIES: [TECHNOLOGIES.REACT, TECHNOLOGIES.TYPESCRIPT],
+    },
+    {
+      title: "XCM-SDK",
+      description:
+        "A Npm package designed to abstract and simplify complex cross-consensus asset transfers and communication between parachains in the Polkadot and Kusama ecosystems.",
+      photo: "projects/github.svg",
+      mainLink: {
+        name: "NPM",
+        url: "https://www.npmjs.com/package/xcm-sdk",
+      },
+      links: [{ url: "https://github.com/blockcoders/xcm-sdk" }],
+      TECHNOLOGIES: [TECHNOLOGIES.NODE_JS],
+    },
+    {
+      title: "ink-explorer",
+      description:
+        "An open-source React and TypeScript developer interface designed to inspect, trigger, and interact with ink! smart contracts on Substrate-based networks.",
+      photo: "projects/github.svg",
+      links: [
+        {
+          name: "Source (Frontend)",
+          url: "https://github.com/blockcoders/ink-substrate-explorer-frontend",
+        },
+        {
+          name: "Source (Backend)",
+          url: "https://github.com/blockcoders/ink-substrate-explorer-api",
+        },
+      ],
+      TECHNOLOGIES: [
+        TECHNOLOGIES.NEXTJS,
+        TECHNOLOGIES.NEST_JS,
+        TECHNOLOGIES.TYPESCRIPT,
+      ],
+    },
+    {
+      title: "Cli Laboratorio",
+      description:
+        "A mobile app for patients to manage their positions in the queue, view their lab results, budgets and appointments.",
+      photo: "projects/cli-laboratorio.png",
+      mainLink: {
+        name: "Play Store",
+        url: "https://play.google.com/store/apps/details?id=com.kurodev.labcli&hl=es",
+      },
+      TECHNOLOGIES: [TECHNOLOGIES.REACT_NATIVE, TECHNOLOGIES.TYPESCRIPT],
+    },
+    {},
+  ],
   personalProjects: [
     {
       title: "Focus: Kuria Mind",
       description:
         "Kuria Mind is an Android application that allows users to manage app usage on their device. By creating blocks, users can select specific apps to restrict their execution and receive notifications about their activity.",
       photo: "projects/kuriamind.png",
-      github_url: "https://github.com/rubenguc/kuriamind",
-      link: {
-        type: LINKS.PLAY_STORE,
+      mainLink: {
+        name: "Play Store",
         url: "https://play.google.com/store/apps/details?id=com.kuriamind",
       },
+      links: [{ url: "https://github.com/rubenguc/kuriamind" }],
       technologies: [TECHNOLOGIES.REACT_NATIVE, TECHNOLOGIES.KOTLIN],
       color: "#1d71d7",
     },
@@ -107,12 +163,16 @@ export const INFO = {
       description:
         "bxzella is a platform designed to help traders analyze their performance by integrating with the BingX API. It allows users to view their transaction history, open positions, and track key trading statistics to make informed decisions and improve their strategies.",
       photo: "projects/bxzella.png",
-      github_url: "https://github.com/rubenguc/bxzella",
-      link: {
-        type: LINKS.WEB_DEMO,
+      mainLink: {
+        name: "Demo",
         url: "https://bxzella-demo.vercel.app/",
       },
-      technologies: [TECHNOLOGIES.NEXTJS, TECHNOLOGIES.MONGODB],
+      links: [{ url: "https://github.com/rubenguc/bxzella" }],
+      technologies: [
+        TECHNOLOGIES.NEXTJS,
+        TECHNOLOGIES.MONGODB,
+        TECHNOLOGIES.TYPESCRIPT,
+      ],
       color: "#30b6ee",
     },
   ],

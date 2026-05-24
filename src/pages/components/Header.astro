@@ -1,66 +1,67 @@
 ---
-import { House, Github, Linkedin, FileUser,  Sun, Moon } from "@lucide/astro";
-import { INFO } from "../../info";
-
-const getIcon = (platform: string) => {
-    switch (platform) {
-        case "github":
-            return Github;
-        case "linkedin":
-            return Linkedin;
-        case "cv":
-            return FileUser;
-        default:
-            return null;
-    }
-};
+import { Sun, Moon } from "@lucide/astro";
 ---
 
-<header
-    class="sticky top-0 z-10 w-full py-4 px-2"
->
-    <div class="backdrop-blur-sm mx-auto bg-white/65 dark:bg-[#121212] flex items-center justify-between w-fit border rounded-xl border-zinc-200 dark:border-zinc-600 p-3">
-        <a href="/" class="hover:opacity-70 hover:scale-105 transition-transform dark:text-zinc-300" aria-label="home">
-            <House size={23} stroke-width={1.8} />
-        </a>
-        <div class="w-px h-5 bg-zinc-200 dark:text-zinc-300  mx-6"></div>
-        <div class="flex items-center justify-center space-x-8">
-            {
-                INFO.contactInfo.map((social) => (
-                    <a href={social.link} target="_blank" aria-label={`${social.label} link`} class="hover:opacity-60 hover:scale-110 transition-transform dark:text-zinc-300">
-                            <span class="sr-only transform transition-colors hover:text-slate-200">
-                                {social.label}
-                            </span>
+<header class="sticky top-0 z-10 w-full py-4 px-2">
+    <div
+        class="mx-auto flex items-center justify-between w-fit border border-zinc-200 dark:border-zinc-700/60 rounded-xl bg-white/70 dark:bg-zinc-900/70 backdrop-blur-md px-4 py-2 gap-4 shadow-sm"
+    >
+        <!-- Navigation -->
+        <nav class="flex items-center gap-0.5">
+            <a
+                href="#home"
+                class="text-xs font-medium text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 px-2.5 py-1.5 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all"
+            >
+                Home
+            </a>
+            <a
+                href="#experience"
+                class="text-xs font-medium text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 px-2.5 py-1.5 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all"
+            >
+                Experience
+            </a>
+            <a
+                href="#projects"
+                class="text-xs font-medium text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 px-2.5 py-1.5 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all"
+            >
+                Projects
+            </a>
 
-                            {<getIcon(social.platform) size={23} stroke-width={1.8}></getIcon>}
-                        </a>
-                    ))
-                }
-            <button id="theme-toggle" aria-label="Toggle theme" class="hover:opacity-60 hover:scale-110 transition-transform dark:text-zinc-300">
-                <Sun size={23} stroke-width={1.8} class="dark:hidden"/>
-                <Moon size={23} stroke-width={1.8} class="hidden dark:block"/>
+            <div class="w-px h-5 bg-zinc-200 dark:bg-zinc-700 mx-1" />
+
+            <button
+                id="theme-toggle"
+                aria-label="Toggle theme"
+                class="text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 p-1.5 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all cursor-pointer"
+            >
+                <Sun size={18} stroke-width={1.8} class="dark:hidden" />
+                <Moon size={18} stroke-width={1.8} class="hidden dark:block" />
             </button>
-            </div>
+        </nav>
     </div>
 </header>
 
 <script>
-    const themeToggleBtn = document.getElementById('theme-toggle');
+    const themeToggleBtn = document.getElementById("theme-toggle");
     const html = document.documentElement;
 
-    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        html.classList.add('dark');
+    if (
+        localStorage.theme === "dark" ||
+        (!("theme" in localStorage) &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches)
+    ) {
+        html.classList.add("dark");
     } else {
-        html.classList.remove('dark');
+        html.classList.remove("dark");
     }
 
-    themeToggleBtn?.addEventListener('click', () => {
-        if (html.classList.contains('dark')) {
-            html.classList.remove('dark');
-            localStorage.theme = 'light';
+    themeToggleBtn?.addEventListener("click", () => {
+        if (html.classList.contains("dark")) {
+            html.classList.remove("dark");
+            localStorage.theme = "light";
         } else {
-            html.classList.add('dark');
-            localStorage.theme = 'dark';
+            html.classList.add("dark");
+            localStorage.theme = "dark";
         }
     });
 </script>

@@ -1,100 +1,75 @@
 ---
-import { INFO, TECHNOLOGIES } from "../../info";
-import { ExternalLink, Github } from "@lucide/astro";
+import { Briefcase, Code2 } from "@lucide/astro";
+import ProjectCard from "./ProjectCard.astro";
+import { INFO } from "../../info";
 
-const ICONS_PATH = "/technologies/";
-
-const getIcon = (tech: keyof typeof TECHNOLOGIES) => {
-    switch (tech) {
-        case TECHNOLOGIES.KOTLIN:
-            return ICONS_PATH + "Kotlin.svg";
-        case TECHNOLOGIES.REACT_NATIVE:
-            return ICONS_PATH + "React.svg";
-        case TECHNOLOGIES.MONGODB:
-            return ICONS_PATH + "MongoDB.svg";
-        case TECHNOLOGIES.NEXTJS:
-            return ICONS_PATH + "Next.js.svg";
-        default:
-            return "";
-    }
-};
+const clientProjects = INFO.clientAndCompanyProjects.filter((p) => p.title);
+const hasClientProjects = clientProjects.length > 0;
+const hasPersonalProjects = INFO.personalProjects.length > 0;
 ---
 
-<section id="projects" class="py-10 md:py-14">
-    <div class="w-full px-8 fade-element delay-2">
-        <div class="mb-7">
+<section id="projects" class="py-14 md:py-20">
+    <div class="w-full px-8">
+        <!-- Section header -->
+        <div class="mb-10 md:mb-14 fade-element delay-2">
             <h2
-                class="text-3xl md:text-4xl text-zinc-900 dark:text-zinc-100 font-semibold"
+                class="text-3xl md:text-4xl text-zinc-900 dark:text-zinc-100 font-semibold tracking-tight"
             >
                 Projects
             </h2>
         </div>
 
-        <div class="flex flex-col gap-10">
-            {
-                INFO.personalProjects.map((pp) => (
-                    <div
-                        class={`flex flex-col lg:gap-10 border rounded-xl border-zinc-200 dark:border-zinc-600 overflow-hidden bg-gradient-to-b from-transparent via-transparent via-34% to-white dark:to-[#121212] to-65%`}
-                        style={`background-color: ${pp.color}`}
+        <!-- Client & Company Projects -->
+        {hasClientProjects && (
+            <div class="mb-12 md:mb-16">
+                <div class="flex items-center gap-2 mb-5">
+                    <Briefcase
+                        size={16}
+                        class="text-zinc-400 dark:text-zinc-500"
+                    />
+                    <h3
+                        class="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-widest"
                     >
-                        <img
-                            src={pp.photo}
-                            alt={pp.title}
-                            class="flex-1 object-contain w-full h-40 md:h-80  max-h-80  mx-auto"
-                        />
-                        <div class="p-4  flex flex-col flex-1 ">
-                            <div class="flex flex-col flex-1 mb-5 lg:mb-0">
-                                <div class="flex justify-between items-center flex-wrap mb-3">
-                                    {pp.link ? (
-                                        <a
-                                            href={pp.link.url}
-                                            target="_blank"
-                                            class="hover:scale-105 hover:opacity-70 text-zinc-900 dark:text-zinc-100 transition-all flex items-center gap-1 md:text-xl"
-                                        >
-                                            <p class="font-semibold">
-                                                {pp.title}
-                                            </p>
-                                            <ExternalLink
-                                                size={15}
-                                                class="text-zinc-500 dark:text-zinc-400"
-                                            />
-                                        </a>
-                                    ) : (
-                                        <p class="font-semibold  text-zinc-900">
-                                            {pp.title}
-                                        </p>
-                                    )}
+                        Client &amp; Company Projects
+                    </h3>
+                </div>
 
-                                    {pp.github_url && (
-                                        <a
-                                            aria-label={`View ${pp.title} on GitHub`}
-                                            href={pp.github_url}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            class="hover:scale-105 hover:opacity-70 text-zinc-900 dark:text-zinc-300 transition-all"
-                                        >
-                                            <Github />
-                                        </a>
-                                    )}
-                                </div>
-                                <p
-                                    class="text-zinc-600 dark:text-zinc-300 description text-sm lg:text-base py-2"
-                                    set:html={pp.description}
-                                />
-                            </div>
-                            <div class="flex gap-2">
-                                {pp.technologies.map((tech) => (
-                                    <img
-                                        src={getIcon(tech as any)}
-                                        alt={tech}
-                                        class="w-5 h-5 lg:w-6 lg:h-6"
-                                    />
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-                ))
-            }
-        </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+                    {clientProjects.map((project, i) => (
+                        <ProjectCard
+                            project={project}
+                            index={i}
+                            defaultColor="#71717a"
+                        />
+                    ))}
+                </div>
+            </div>
+        )}
+
+        <!-- Personal Projects -->
+        {hasPersonalProjects && (
+            <div>
+                <div class="flex items-center gap-2 mb-5">
+                    <Code2
+                        size={16}
+                        class="text-zinc-400 dark:text-zinc-500"
+                    />
+                    <h3
+                        class="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-widest"
+                    >
+                        Personal Projects
+                    </h3>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+                    {INFO.personalProjects.map((project, i) => (
+                        <ProjectCard
+                            project={project}
+                            index={i + clientProjects.length}
+                        />
+                    ))}
+                </div>
+            </div>
+        )}
     </div>
 </section>

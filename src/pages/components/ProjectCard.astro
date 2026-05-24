@@ -1,0 +1,155 @@
+---
+import { Github, ArrowUpRight } from "@lucide/astro";
+import { TECHNOLOGIES } from "../../info";
+
+export interface Props {
+    project: {
+        title: string;
+        description?: string;
+        photo?: string;
+        mainLink?: { name?: string; url: string };
+        links?: Array<{ name?: string; url: string }>;
+        technologies?: string[];
+        TECHNOLOGIES?: string[];
+        color?: string;
+    };
+    index?: number;
+    defaultColor?: string;
+}
+
+const { project, index = 0, defaultColor = "#71717a" } = Astro.props;
+
+const color = project.color || defaultColor;
+const techs = (project.technologies || project.TECHNOLOGIES || []).filter(
+    Boolean,
+);
+const links = project.links || [];
+const hasImage = Boolean(project.photo);
+const hasDescription = Boolean(project.description);
+const hasLinks = links.length > 0;
+
+const mainLink = project.mainLink;
+const hasMainLink = Boolean(mainLink?.url);
+
+const isGithubUrl = (url: string) => /github\.com/i.test(url);
+
+const ICONS_PATH = "/technologies/";
+
+const getIcon = (tech: string) => {
+    return ICONS_PATH + `${tech}.svg`;
+};
+---
+
+<div
+    class="fade-element group relative flex flex-col rounded-2xl border border-zinc-200 dark:border-zinc-700/60 bg-white dark:bg-zinc-800/40 overflow-hidden"
+    style={`transition-delay: ${200 + index * 150}ms`}
+>
+    <!-- Color accent bar -->
+    <div
+        class="absolute top-0 left-0 z-10 w-full h-1"
+        style={{ backgroundColor: color }}
+    />
+
+    <!-- Image area -->
+    {
+        hasImage && (
+            <div
+                class="relative w-full overflow-hidden"
+                style={{ backgroundColor: `${color}0d` }}
+            >
+                <div class="aspect-[4/3] relative">
+                    <img
+                        src={project.photo}
+                        alt={project.title}
+                        class="absolute inset-0 w-full h-full object-cover transition-transform duration-300 ease-out group-hover:scale-105"
+                        loading={index > 0 ? "lazy" : "eager"}
+                    />
+                </div>
+                <div class="absolute inset-0 bg-gradient-to-tr from-white/30 dark:from-zinc-900/40 via-transparent to-transparent pointer-events-none" />
+            </div>
+        )
+    }
+
+    <!-- Content area -->
+    <div class="flex flex-col flex-1 p-5 md:p-6 lg:p-8">
+        <!-- Title -->
+        <h3
+            class="text-xl md:text-2xl font-bold text-zinc-900 dark:text-zinc-100 tracking-tight leading-tight mb-3"
+        >
+            {
+                hasMainLink ? (
+                    <a
+                        href={mainLink!.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="inline-flex items-center gap-1.5 hover:opacity-80 transition-opacity"
+                    >
+                        <span>{project.title}</span>
+                        <ArrowUpRight
+                            size={16}
+                            class="text-zinc-400 dark:text-zinc-500 shrink-0"
+                        />
+                    </a>
+                ) : (
+                    project.title
+                )
+            }
+        </h3>
+
+        <!-- Links row -->
+        {
+            hasLinks && (
+                <div class="flex flex-wrap gap-2 mb-3">
+                    {links.map((link) => {
+                        const isGithub = isGithubUrl(link.url);
+                        return (
+                            <a
+                                href={link.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg border border-zinc-200 dark:border-zinc-600 bg-zinc-50 dark:bg-zinc-700/30 text-zinc-600 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-700 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
+                            >
+                                {isGithub
+                                    ? <Github size={13} />
+                                    : <ArrowUpRight size={13} />}
+                                <span>{link.name || (isGithub ? "Source" : "Link")}</span>
+                            </a>
+                        );
+                    })}
+                </div>
+            )
+        }
+
+        <!-- Description -->
+        {
+            hasDescription && (
+                <p class="text-sm md:text-base text-zinc-600 dark:text-zinc-300 leading-relaxed mb-5 flex-1">
+                    {project.description}
+                </p>
+            )
+        }
+
+        <!-- Tech stack tags -->
+        {
+            techs.length > 0 && (
+                <div class="flex flex-wrap gap-2">
+                    {techs.map((tech) => {
+                        const iconPath = getIcon(tech);
+                        return (
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium rounded-lg border border-zinc-200 dark:border-zinc-600 bg-zinc-50 dark:bg-zinc-700/30 text-zinc-600 dark:text-zinc-300 whitespace-nowrap">
+                                {iconPath && (
+                                    <img
+                                        src={iconPath}
+                                        alt=""
+                                        class="w-3.5 h-3.5"
+                                    />
+                                )}
+                                {tech}
+                            </span>
+                        );
+                    })}
+                </div>
+            )
+        }
+    </div>
+</div>

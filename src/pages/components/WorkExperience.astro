@@ -1,97 +1,137 @@
 ---
 import { INFO } from "../../info";
+import { Calendar } from "@lucide/astro";
 
-const workExperiences = INFO.workExperiences;
+const allExperiences = INFO.workExperiences;
 const initialCount = 2;
-const hasMore = workExperiences.length > initialCount;
+const hasMore = allExperiences.length > initialCount;
 ---
 
-<section id="experience" class="py-10 md:py-14">
-    <div class="w-full px-8 fade-element delay-1">
-        <div class="mb-7">
+<section id="experience" class="py-14 md:py-20">
+    <div class="w-full px-8">
+        <!-- Section header -->
+        <div class="mb-10 md:mb-14 fade-element delay-1">
             <h2
-                class="text-3xl md:text-4xl text-zinc-900 dark:text-zinc-100 font-semibold"
+                class="text-3xl md:text-4xl text-zinc-900 dark:text-zinc-100 font-semibold tracking-tight"
             >
                 Experience
             </h2>
+            <p class="text-zinc-500 dark:text-zinc-400 text-sm md:text-base mt-2">
+                Where I've worked and what I've done
+            </p>
         </div>
 
-        <div class="flex flex-col gap-5" id="experience-list">
+        <!-- Timeline container -->
+        <div class="relative" id="experience-list">
+            <!-- Vertical timeline line -->
+            <div
+                class="absolute left-[15px] top-2 bottom-2 w-px bg-zinc-200 dark:bg-zinc-700"
+                aria-hidden="true"
+            />
+
             {
-                workExperiences.slice(0, initialCount).map((we) => (
-                    <div class="py-3">
-                        <h3 class="flex gap-x-1.5 font-semibold text-zinc-700 dark:text-zinc-300 text-xl lg:text-3xl">
-                            {we.position}
-                        </h3>
-                        <span class="flex gap-x-1.5 font-semibold text-zinc-700 dark:text-zinc-300 text-xl lg:text-3xl">
-                            {we.company}
-                        </span>
-                        <span class="text-xs lg:text-base block text-zinc-700 dark:text-zinc-300">
-                            {we.period}
-                        </span>
-                        <ul class="flex flex-col gap-1 mt-4 list-disc px-3.5 text-base text-zinc-600 dark:text-zinc-300">
-                            {we.responsibilities.map((r) => (
-                                <li>{r}</li>
-                            ))}
-                        </ul>
-                    </div>
-                ))
+                allExperiences.map((we, index) => {
+                    const isHidden = index >= initialCount;
+                    return (
+                        <div
+                            class="relative pl-10 pb-12 last:pb-0"
+                            class:list={[
+                                !isHidden && "fade-element",
+                                isHidden && "hidden",
+                            ]}
+                            style={
+                                !isHidden
+                                    ? `transition-delay: ${100 + index * 150}ms`
+                                    : undefined
+                            }
+                            data-experience={isHidden ? "more" : undefined}
+                        >
+                            <!-- Timeline dot -->
+                            <div class="absolute left-0 top-1 w-8 h-8 rounded-full bg-white dark:bg-zinc-800 border-2 border-zinc-300 dark:border-zinc-600 flex items-center justify-center z-10">
+                                <div class="w-2.5 h-2.5 rounded-full bg-zinc-400 dark:bg-zinc-500" />
+                            </div>
+
+                            <!-- Content card -->
+                            <div class="bg-white dark:bg-zinc-800/40 border border-zinc-200 dark:border-zinc-700/60 rounded-xl p-5 md:p-6 transition-all duration-300 hover:shadow-md hover:shadow-zinc-200/50 dark:hover:shadow-black/20 hover:-translate-y-0.5">
+                                <!-- Period badge -->
+                                <span class="inline-flex items-center gap-1.5 text-xs font-medium text-zinc-500 dark:text-zinc-400 bg-zinc-100 dark:bg-zinc-700/50 px-2.5 py-1 rounded-md mb-3">
+                                    <Calendar size={12} />
+                                    {we.period}
+                                </span>
+
+                                <!-- Position -->
+                                <h3 class="text-lg md:text-xl font-bold text-zinc-900 dark:text-zinc-100 tracking-tight">
+                                    {we.position}
+                                </h3>
+
+                                <!-- Company -->
+                                <p class="text-base md:text-lg font-medium text-zinc-500 dark:text-zinc-400 mt-0.5 mb-4">
+                                    {we.company}
+                                </p>
+
+                                <!-- Responsibilities -->
+                                <ul class="flex flex-col gap-2.5">
+                                    {we.responsibilities.map((r) => (
+                                        <li class="flex gap-3 text-sm md:text-base text-zinc-600 dark:text-zinc-300 leading-relaxed">
+                                            <span
+                                                class="shrink-0 mt-1.5 w-1.5 h-1.5 rounded-full bg-zinc-300 dark:bg-zinc-600"
+                                                aria-hidden="true"
+                                            />
+                                            {r}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </div>
+                    );
+                })
             }
 
+            <!-- Show more button -->
             {
                 hasMore && (
-                    <button
-                        id="show-more-btn"
-                        class="flex w-fit mx-auto items-center justify-center bg-zinc-900 dark:bg-zinc-200 hover:bg-zinc-700 hover:dark:bg-zinc-100 text-white dark:text-zinc-900 px-5 py-2 rounded-2xl hover:scale-105 transition-all cursor-pointer space-x-3"
-                    >
-                        Show {workExperiences.length - initialCount} more
-                    </button>
-                )
-            }
-
-            {
-                workExperiences.slice(initialCount).map((we, index) => (
-                    <div
-                        class="py-3 hidden fade-element"
-                        data-experience="more"
-                    >
-                        <h3 class="flex gap-x-1.5 font-semibold text-zinc-700 dark:text-zinc-300 text-xl lg:text-3xl">
-                            {we.position}
-                        </h3>
-                        <span class="flex gap-x-1.5 font-semibold text-zinc-700 dark:text-zinc-300 text-xl lg:text-3xl">
-                            {we.company}
-                        </span>
-                        <span class="text-xs lg:text-base block text-zinc-700 dark:text-zinc-300">
-                            {we.period}
-                        </span>
-                        <ul class="flex flex-col gap-1 mt-4 list-disc px-3.5 text-base text-zinc-600 dark:text-zinc-300">
-                            {we.responsibilities.map((r) => (
-                                <li>{r}</li>
-                            ))}
-                        </ul>
+                    <div class="relative pl-10 pt-2 fade-element">
+                        <button
+                            id="show-more-btn"
+                            class="flex items-center gap-2 text-sm font-medium text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 bg-zinc-100 dark:bg-zinc-700/50 hover:bg-zinc-200 dark:hover:bg-zinc-700 px-4 py-2 rounded-lg transition-all cursor-pointer"
+                        >
+                            Show {allExperiences.length - initialCount} more
+                        </button>
                     </div>
-                ))
+                )
             }
         </div>
     </div>
 
     <script is:inline>
-        document
-            .getElementById("show-more-btn")
-            .addEventListener("click", function () {
+        const btn = document.getElementById("show-more-btn");
+        if (btn) {
+            btn.addEventListener("click", function () {
                 const hiddenItems = document.querySelectorAll(
                     '[data-experience="more"]',
                 );
 
-                this.classList.add("hidden");
+                // Hide the button container
+                this.closest(".relative")?.classList.add("hidden");
 
                 hiddenItems.forEach((item, index) => {
+                    // Make visible and set initial state
                     item.classList.remove("hidden");
+                    item.style.opacity = "0";
+                    item.style.transform = "translateY(24px)";
+                    item.style.transition =
+                        "opacity 0.5s ease, transform 0.5s ease";
 
+                    // Force reflow to ensure initial state is rendered
+                    void item.offsetHeight;
+
+                    // Animate in with stagger
                     setTimeout(() => {
-                        item.classList.add("visible");
-                    }, index * 100);
+                        item.style.opacity = "1";
+                        item.style.transform = "translateY(0)";
+                    }, 50 + index * 120);
                 });
             });
+        }
     </script>
 </section>

@@ -1,68 +1,134 @@
 ---
 import { INFO } from "../../info";
-import { Copy, Mail } from "@lucide/astro";
+import { Copy, Mail, Github, Linkedin, FileUser } from "@lucide/astro";
 import { Image } from "astro:assets";
 import ProfilePhoto from "../../assets/photo.jpeg";
+
+const githubUrl =
+    INFO.contactInfo.find((s) => s.platform === "github")?.link ?? "#";
+const linkedinUrl =
+    INFO.contactInfo.find((s) => s.platform === "linkedin")?.link ?? "#";
+const cvUrl = INFO.contactInfo.find((s) => s.platform === "cv")?.link ?? "#";
 ---
 
-<section id="home" class="flex py-10 md:py-20">
+<section id="home" class="py-14 md:py-24">
     <div class="w-full px-8 fade-element">
-        <div
-            class="flex flex-col-reverse md:flex-row justify-between gap-2 md:gap-10"
-        >
-            <div class="md:flex-3/4">
+        <div class="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-14 items-center">
+            <!-- Text content -->
+            <div class="md:col-span-3">
                 <h1
-                    class="text-zinc-900 font-semibold text-3xl md:text-5xl mb-5 dark:text-zinc-100"
+                    class="text-zinc-900 dark:text-zinc-100 font-bold text-4xl md:text-5xl lg:text-6xl tracking-tight leading-tight mb-5"
                 >
                     {INFO.hello}
                 </h1>
                 <p
-                    class="text-zinc-600 md:text-lg leading-relaxed dark:text-zinc-300"
+                    class="text-zinc-600 dark:text-zinc-300 md:text-lg leading-relaxed max-w-2xl"
                 >
                     {INFO.heroDescriptions}
                 </p>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mt-7">
-                    <a
-                        href={`mailto:${INFO.email}`}
-                        target="_blank"
-                        role="button"
-                        class="flex w-full font-bold items-center justify-center bg-zinc-900 dark:bg-zinc-200 hover:bg-zinc-700 hover:dark:bg-zinc-100 text-white dark:text-zinc-900 px-5 py-4 rounded-2xl hover:scale-105 transition-all cursor-pointer space-x-3"
-                    >
-                        <Mail />
-                        <span>Contact me</span>
-                    </a>
+                <!-- Contact pill -->
+                <div class="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4 mt-8">
+                    <div class="flex items-center justify-between w-full sm:w-auto min-w-0 gap-2 px-4 py-2.5 rounded-xl border border-zinc-200 dark:border-zinc-700/60 bg-zinc-50 dark:bg-zinc-800/30">
+                        <span class="text-sm font-medium text-zinc-700 dark:text-zinc-300 truncate min-w-0">
+                            {INFO.email}
+                        </span>
+                        <div class="flex items-center gap-1 shrink-0">
+                            <!-- Copy -->
+                            <div class="relative">
+                                <button
+                                    id="copy-email-btn"
+                                    data-email={INFO.email}
+                                    class="p-2 rounded-lg text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-all cursor-pointer"
+                                    aria-label="Copy email"
+                                >
+                                    <Copy size={14} />
+                                </button>
+                                <div
+                                    id="copy-success-message"
+                                    class="absolute right-0 bottom-full mb-1.5 bg-zinc-900 dark:bg-zinc-700 text-white text-nowrap rounded-lg px-2.5 py-1 text-xs opacity-0 invisible transition-all duration-300 pointer-events-none"
+                                    role="alert"
+                                >
+                                    Copied!
+                                </div>
+                            </div>
 
-                    <div class="relative w-full">
-                        <button
-                            id="email-contact-link"
-                            data-email={INFO.email}
-                            class="flex font-bold w-full items-center justify-center border border-zinc-700 dark:border-zinc-200 hover:opacity-70 text-zinc-700 dark:text-zinc-100 px-5 py-4 rounded-2xl hover:scale-105 transition-all cursor-pointer space-x-3"
-                        >
-                            <Copy />
-                            <span>Copy email</span>
-                        </button>
-
-                        <div
-                            id="copy-success-message"
-                            class="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 bg-zinc-900 text-white text-center text-nowrap rounded-2xl px-4 py-2 text-sm font-normal opacity-0 invisible transition-all duration-300"
-                            role="alert"
-                        >
-                            <div class="text-sm font-normal">Email copied!</div>
+                            <!-- Mail -->
+                            <a
+                                href={`mailto:${INFO.email}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="p-2 rounded-lg text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-all"
+                                aria-label="Send email"
+                            >
+                                <Mail size={14} />
+                            </a>
                         </div>
                     </div>
                 </div>
+
+                <!-- Social pills -->
+                <div class="flex flex-wrap gap-2 mt-5">
+                    <!-- GitHub -->
+                    <a
+                        href={githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="group flex items-center gap-2 px-4 py-2.5 rounded-xl border border-zinc-200 dark:border-zinc-700/60 bg-zinc-50 dark:bg-zinc-800/30 text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-700/60 transition-all"
+                        aria-label="GitHub profile"
+                    >
+                        <Github size={18} stroke-width={1.8} class="shrink-0" />
+                        <span class="text-sm font-medium overflow-hidden whitespace-nowrap max-w-0 group-hover:max-w-[120px] transition-all duration-300 ease-out">
+                            GitHub
+                        </span>
+                    </a>
+
+                    <!-- LinkedIn -->
+                    <a
+                        href={linkedinUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="group flex items-center gap-2 px-4 py-2.5 rounded-xl border border-zinc-200 dark:border-zinc-700/60 bg-zinc-50 dark:bg-zinc-800/30 text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-700/60 transition-all"
+                        aria-label="LinkedIn profile"
+                    >
+                        <Linkedin size={18} stroke-width={1.8} class="shrink-0" />
+                        <span class="text-sm font-medium overflow-hidden whitespace-nowrap max-w-0 group-hover:max-w-[120px] transition-all duration-300 ease-out">
+                            LinkedIn
+                        </span>
+                    </a>
+
+                    <!-- Resume -->
+                    <a
+                        href={cvUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="group flex items-center gap-2 px-4 py-2.5 rounded-xl border border-zinc-200 dark:border-zinc-700/60 bg-zinc-50 dark:bg-zinc-800/30 text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-700/60 transition-all"
+                        aria-label="View CV"
+                    >
+                        <FileUser size={18} stroke-width={1.8} class="shrink-0" />
+                        <span class="text-sm font-medium overflow-hidden whitespace-nowrap max-w-0 group-hover:max-w-[120px] transition-all duration-300 ease-out">
+                            Resume
+                        </span>
+                    </a>
+                </div>
             </div>
 
-            <div class="md:flex-1/4">
-                <Image
-                    loading="eager"
-                    width={240}
-                    height={240}
-                    class="rounded-full mx-auto"
-                    src={ProfilePhoto}
-                    alt={"Ruben gutierrez photo"}
-                />
+            <!-- Photo -->
+            <div class="md:col-span-2 flex justify-center md:justify-end">
+                <div class="relative">
+                    <div
+                        class="absolute -inset-5 rounded-full bg-gradient-to-br from-zinc-100/80 to-zinc-200/50 dark:from-zinc-800/60 dark:to-zinc-700/30 blur-xl -z-10"
+                        aria-hidden="true"
+                    />
+                    <Image
+                        loading="eager"
+                        width={300}
+                        height={300}
+                        class="rounded-full mx-auto ring-2 ring-zinc-200 dark:ring-zinc-700 shadow-xl shadow-zinc-200/50 dark:shadow-black/40"
+                        src={ProfilePhoto}
+                        alt="Ruben Gutierrez"
+                    />
+                </div>
             </div>
         </div>
     </div>
@@ -93,12 +159,12 @@ import ProfilePhoto from "../../assets/photo.jpeg";
 </style>
 
 <script is:inline>
-    const emailLink = document.getElementById("email-contact-link");
+    const copyBtn = document.getElementById("copy-email-btn");
     const successMessage = document.getElementById("copy-success-message");
 
-    if (emailLink && successMessage) {
-        emailLink.addEventListener("click", async () => {
-            const email = emailLink.dataset.email;
+    if (copyBtn && successMessage) {
+        copyBtn.addEventListener("click", async () => {
+            const email = copyBtn.dataset.email;
             try {
                 await navigator.clipboard.writeText(email);
 
