@@ -1,6 +1,5 @@
 ---
 import { Github, ArrowUpRight } from "@lucide/astro";
-import { TECHNOLOGIES } from "../../info";
 
 export interface Props {
     project: {
@@ -48,7 +47,8 @@ const getIcon = (tech: string) => {
     <div
         class="absolute top-0 left-0 z-10 w-full h-1"
         style={{ backgroundColor: color }}
-    />
+    >
+    </div>
 
     <!-- Image area -->
     {
@@ -109,10 +109,15 @@ const getIcon = (tech: string) => {
                                 rel="noopener noreferrer"
                                 class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg border border-zinc-200 dark:border-zinc-600 bg-zinc-50 dark:bg-zinc-700/30 text-zinc-600 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-700 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
                             >
-                                {isGithub
-                                    ? <Github size={13} />
-                                    : <ArrowUpRight size={13} />}
-                                <span>{link.name || (isGithub ? "Source" : "Link")}</span>
+                                {isGithub ? (
+                                    <Github size={13} />
+                                ) : (
+                                    <ArrowUpRight size={13} />
+                                )}
+                                <span>
+                                    {link.name ||
+                                        (isGithub ? "Source" : "Link")}
+                                </span>
                             </a>
                         );
                     })}
